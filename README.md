@@ -1,0 +1,2 @@
+# epitaph
+Burial society software
