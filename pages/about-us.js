@@ -12,7 +12,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main class="text-bg-light p-4 rounded-5">
+      <main className="text-bg-light p-4 rounded-5">
         <h1>
             About Us
         </h1>
