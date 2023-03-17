@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
+        <meta name="description" content={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
