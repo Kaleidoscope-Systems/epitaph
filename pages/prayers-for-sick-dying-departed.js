@@ -6,10 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function SelectGender() {
+function SelectGender({ value, onChange }) {
   return (
-    <Form.Select className='my-3'aria-label="Select gender">
-      <option selected disabled>Select gender</option>
+    <Form.Select className='my-3' aria-label="Select gender" value={value} onChange={onChange}>
+      <option disabled value="">Select gender</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="Plural">Plural</option>
@@ -17,13 +17,21 @@ function SelectGender() {
   );
 }
 
-function PrayerCustomizer() {
+
+function PrayerCustomizer({ onSave }) {
   const [show, setShow] = useState(false);
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
 
   const handleClose = () => {
     setShow(false);
   };
   const handleShow = () => setShow(true);
+
+  const handleSave = () => {
+    onSave({ name, gender });
+    handleClose();
+  };
 
   return (
     <>
@@ -37,18 +45,18 @@ function PrayerCustomizer() {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" id='name' placeholder="Name"/>
+              <Form.Control type="text" id='name' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
             </Form.Group>
-            <SelectGender />
+            <SelectGender value={gender} onChange={(e) => setGender(e.target.value)} />
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="primary" onClick={handleClose}>
+          <Button type="submit" variant="primary" onClick={handleSave}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -56,12 +64,14 @@ function PrayerCustomizer() {
     </>
   );
 }
-
 export default function About() {
-    const savePrayerCustomizer = async (event) => {
-        event.preventDefault();
-        alert(`Your name is ${event.target.name.value} and gender is ${event.target.gender.value}`);
-      };
+  const [name, setName] = useState('________');
+  const handleSavePrayerCustomizer = (data) => {
+    
+    /*alert(`Your name is ${data.name} and gender is ${data.gender}`);*/
+    setName(data.name);
+
+};
 
     return (
         <div>
@@ -77,7 +87,7 @@ export default function About() {
           Prayers for the Sick, Dying, and Departed
         </h1>
 
-        <PrayerCustomizer />
+        <PrayerCustomizer onSave={handleSavePrayerCustomizer}/>
 
 {/*         <div id='prayerCustomizer'>
             Automatically insert the person you're praying for into the below prayers:
@@ -99,8 +109,8 @@ export default function About() {
         </div> */}
         
         <h2>Prayers for the Sick</h2>
-        <p>
-        Almighty Lord, Physician of souls and bodies, look down upon Your servant, ___ with Your great mercy, for he/she is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise ______ from his/her bed of pain. Reprove the spirit of weakness which is in _____. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, ____, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
+        <p id ="prayer">
+        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for he/she is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise {name} from his/her bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
         </p>
       </main>
     </div>
