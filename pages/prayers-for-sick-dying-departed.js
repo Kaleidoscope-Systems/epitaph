@@ -30,6 +30,7 @@ function PrayerCustomizer({ onSave }) {
   const handleSave = () => {
     onSave({ name, gender });
     handleClose();
+    return gender;
   };
 
   return (
@@ -91,12 +92,16 @@ export default function About() {
   };
 
   function genderToPronoun(context) {
-    if ((PrayerCustomizer.gender = "Male") && (context = "subject")){
-      return(malePronouns.subject);
+    if (PrayerCustomizer.gender = "Male"){
+      return(malePronouns[context]);
     }
 
-    if ((PrayerCustomizer.gender = "Female") && (context = "subject")){
-      return(femalePronouns.subject);
+    if (PrayerCustomizer.gender = "Female"){
+      return(femalePronouns[context]);
+    }
+
+    if (PrayerCustomizer.gender = "Plural"){
+      return(pluralPronouns[context]);
     }
   }
 
@@ -115,7 +120,7 @@ export default function About() {
         </h1>
 
         <PrayerCustomizer onSave={handleSavePrayerCustomizer}/>
-        
+
         <h2>Prayers for the Sick</h2>
         <p id ="prayer">
         Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for {genderToPronoun("subject")} is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise {name} from his/her bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
