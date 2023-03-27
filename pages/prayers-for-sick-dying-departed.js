@@ -17,7 +17,6 @@ function SelectGender({ value, onChange }) {
   );
 }
 
-
 function PrayerCustomizer({ onSave }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
@@ -69,6 +68,33 @@ export default function About() {
   const handleSavePrayerCustomizer = (data) => {    
     setName(data.name);
   };
+  const malePronouns = {
+    subject: 'he',
+    object: 'him',
+    dependentPossessive: 'his',
+    independentPossesivve: 'his',
+    reflexive: 'himself'
+  };
+  const femalePronouns = {
+    subject: 'she',
+    object: 'her',
+    dependentPossessive: 'her',
+    independentPossesivve: 'hers',
+    reflexive: 'herself'
+  };
+  const pluralPronouns = {
+    subject: 'they',
+    object: 'them',
+    dependentPossessive: 'their',
+    independentPossesivve: 'theirs',
+    reflexive: 'themselves'
+  };
+
+  function genderToPronoun({gender, context}) {
+    if (gender = "Male"){
+      return(malePronouns.context);
+    }
+  }
 
     return (
         <div>
@@ -88,7 +114,7 @@ export default function About() {
         
         <h2>Prayers for the Sick</h2>
         <p id ="prayer">
-        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for he/she is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise {name} from his/her bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
+        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for {genderToPronoun("Male", "subject")} is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise {name} from his/her bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
         </p>
       </main>
     </div>
