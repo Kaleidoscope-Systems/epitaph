@@ -72,21 +72,21 @@ export default function About() {
     subject: 'he',
     object: 'him',
     dependentPossessive: 'his',
-    independentPossesivve: 'his',
+    independentPossesive: 'his',
     reflexive: 'himself'
   };
   const femalePronouns = {
     subject: 'she',
     object: 'her',
     dependentPossessive: 'her',
-    independentPossesivve: 'hers',
+    independentPossesive: 'hers',
     reflexive: 'herself'
   };
   const pluralPronouns = {
     subject: 'they',
     object: 'them',
     dependentPossessive: 'their',
-    independentPossesivve: 'theirs',
+    independentPossesive: 'theirs',
     reflexive: 'themselves'
   };
 
