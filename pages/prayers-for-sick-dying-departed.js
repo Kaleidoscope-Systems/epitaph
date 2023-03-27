@@ -46,8 +46,8 @@ function PrayerCustomizer({ onSave }) {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" id='name' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+              <Form.Label>Name(s)</Form.Label>
+              <Form.Control type="text" id='name' placeholder="Name(s)" value={name} onChange={(e) => setName(e.target.value)} />
             </Form.Group>
             <SelectGender value={gender} onChange={(e) => setGender(e.target.value)} />
           </Form>
@@ -66,12 +66,9 @@ function PrayerCustomizer({ onSave }) {
 }
 export default function About() {
   const [name, setName] = useState('________');
-  const handleSavePrayerCustomizer = (data) => {
-    
-    /*alert(`Your name is ${data.name} and gender is ${data.gender}`);*/
+  const handleSavePrayerCustomizer = (data) => {    
     setName(data.name);
-
-};
+  };
 
     return (
         <div>
