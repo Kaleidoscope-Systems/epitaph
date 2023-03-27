@@ -88,25 +88,6 @@ export default function About() {
         </h1>
 
         <PrayerCustomizer onSave={handleSavePrayerCustomizer}/>
-
-{/*         <div id='prayerCustomizer'>
-            Automatically insert the person you're praying for into the below prayers:
-            <form className="flex flex-col" onSubmit={savePrayerCustomizer}>
-            <input type="text" id="name" className='form-control my-3' placeholder='Name' aria-label='Name'></input>
-            <select className="form-select" id="gender" aria-label="Gender">
-                <option selected disabled>Select gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Plural">Plural</option>
-            </select>
-            <button
-                type="submit"
-                className="btn btn-primary px-4 py-2 my-3"
-            >
-                Save
-            </button>
-            </form>
-        </div> */}
         
         <h2>Prayers for the Sick</h2>
         <p id ="prayer">
