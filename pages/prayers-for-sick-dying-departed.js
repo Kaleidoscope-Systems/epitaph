@@ -30,7 +30,9 @@ function PrayerCustomizer({ onSave }) {
   const handleSave = () => {
     onSave({ name, gender });
     handleClose();
+    console.log(gender);
     return gender;
+    
   };
 
   return (
@@ -66,8 +68,10 @@ function PrayerCustomizer({ onSave }) {
 }
 export default function About() {
   const [name, setName] = useState('________');
+  const [gender, setGender] = useState('');
   const handleSavePrayerCustomizer = (data) => {    
     setName(data.name);
+    setGender(data.gender);
   };
   const malePronouns = {
     subject: 'he',
@@ -90,18 +94,30 @@ export default function About() {
     independentPossesive: 'theirs',
     reflexive: 'themselves'
   };
+  const defaultPronouns = {
+    subject: 'he/she',
+    object: 'him/her',
+    dependentPossessive: 'his/her',
+    independentPossesive: 'his/hers',
+    reflexive: 'himself/herself'
+  }
 
   function genderToPronoun(context) {
-    if (PrayerCustomizer.gender = "Male"){
+    console.log(context)
+    if (gender == "Male"){
       return(malePronouns[context]);
     }
 
-    if (PrayerCustomizer.gender = "Female"){
+    if (gender == "Female"){
       return(femalePronouns[context]);
     }
 
-    if (PrayerCustomizer.gender = "Plural"){
+    if (gender == "Plural"){
       return(pluralPronouns[context]);
+    }
+
+    if (gender == ""){
+      return(defaultPronouns[context]);
     }
   }
 
@@ -120,10 +136,13 @@ export default function About() {
         </h1>
 
         <PrayerCustomizer onSave={handleSavePrayerCustomizer}/>
+        <Button className='ms-3' variant="secondary" href="Booklet-of-Prayers-for-Sick-Dying-Departing.pdf" target='_blank'>
+        Download PDF
+        </Button>
 
         <h2>Prayers for the Sick</h2>
         <p id ="prayer">
-        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for {genderToPronoun("subject")} is suffering great infirmity of body and soul. Stretch forth Your loving arm which his so full of healing and health, and is able to raise {name} from his/her bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from him/her that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
+        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for {genderToPronoun("subject")} {gender == "Plural"?"are":"is"} suffering great infirmity of body and soul. Stretch forth Your loving arm which is so full of healing and health, and is able to raise {name} from {genderToPronoun("dependentPossessive")} bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from {genderToPronoun("object")} that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that he/she might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
         </p>
       </main>
     </div>

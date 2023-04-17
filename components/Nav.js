@@ -30,9 +30,6 @@ function GlobalNav() {
               <NavDropdown.Item href="/prayers-for-sick-dying-departed">
                 Prayers for the Sick, Dying, and Departed
               </NavDropdown.Item>
-              <NavDropdown.Item href="Booklet-of-Prayers-for-Sick-Dying-Departing.pdf" target="_blank">
-                Prayers for the Sick, Dying, and Departed
-              </NavDropdown.Item>
               <NavDropdown.Item href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="about-us">About Us</Nav.Link>
