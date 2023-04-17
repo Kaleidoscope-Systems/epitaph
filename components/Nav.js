@@ -27,7 +27,7 @@ function GlobalNav() {
             </NavDropdown>
             <NavDropdown title="Pray" id="basic-nav-dropdown">
               <NavDropdown.Item href="Vigil-Psalms-for-the-Departed-Prayers-of-the-Hours.pdf" target="_blank">Vigil Psalms</NavDropdown.Item>
-              <NavDropdown.Item href="Booklet-of-Prayers-for-Sick-Dying-Departing.pdf" target="_blank">
+              <NavDropdown.Item href="/prayers-for-sick-dying-departed">
                 Prayers for the Sick, Dying, and Departed
               </NavDropdown.Item>
               <NavDropdown.Item href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</NavDropdown.Item>
