@@ -140,10 +140,18 @@ export default function About() {
         Download PDF
         </Button>
 
-        <h2>Prayers for the Sick</h2>
-        <p id ="prayer">
-        Almighty Lord, Physician of souls and bodies, look down upon Your servant, {name} with Your great mercy, for {genderToPronoun("subject")} {gender == "Plural"?"are":"is"} suffering great infirmity of body and soul. Stretch forth Your loving arm which is so full of healing and health, and is able to raise {name} from {genderToPronoun("dependentPossessive")} bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from {genderToPronoun("object")} that which is afflicting by pain, wounds, chills, fever, or weakness of body. In your love for mankind; loosen, remit, and forgive all the sins of your servant, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that {genderToPronoun("subject")} might also know healing of soul. Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.
-        </p>
+        <div id="prayers" className='mt-3'>
+          <div id="prayers-for-the-sick">
+            <h2>Prayers for the Sick</h2>
+            <p>Almighty Lord, Physician of souls and bodies, look down upon Your {gender == "Plural"?"servants":"servant"}, {name} with Your great mercy, for {genderToPronoun("subject")} {gender == "Plural"?"are":"is"} suffering great infirmity of body and soul. Stretch forth Your loving arm which is so full of healing and health, and is able to raise {name} from {genderToPronoun("dependentPossessive")} bed of pain. Reprove the spirit of weakness which is in {name}. Drive far from {genderToPronoun("object")} that which is afflicting by pain, wounds, chills, fever, or weakness of body.</p>
+            <p>In your love for mankind; loosen, remit, and forgive all the sins of your {gender == "Plural"?"servants":"servant"}, {name}, whether committed in thought, word or deed; intentionally, or unwittingly; that {genderToPronoun("subject")} might also know healing of soul.</p>
+            <p>Yea, O Lord, our God, have pity on Your creation, through the compassion of Your only-begotten Son, together with Your All-Holy, Good, and Life-Giving Spirit, both now and ever and unto ages of ages. Amen.</p>
+          </div>
+          <div id='prayer-for-the-dying'>
+            <h2>Prayer for the Dying</h2>
+            <p>O Lord Jesus Christ our God, for the sake of Your most holy wounds, hear our prayer and forgive all the transgressions of your humble {gender == "Plural"?"servants":"servant"}, {name}. At the moment of {genderToPronoun("dependentPossessive")} death, accept into Your merciful hands {genderToPronoun("dependentPossessive")} soul cleansed of all stain of sin, and place {genderToPronoun("object")} with Your Saints in the resplendent light of Your Kingdom. For You are our salvation and redemption, and we give glory to You, together with Your Eternal Father, and Your All-holy, Good, and Life-giving Spirit, now and forever, and unto ages of ages. Amen.</p>
+          </div>
+        </div>
       </main>
     </div>
     )
