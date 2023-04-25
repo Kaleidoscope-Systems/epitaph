@@ -151,6 +151,13 @@ export default function About() {
                 <p>O Lord Jesus Christ our God, for the sake of Your most holy wounds, hear our prayer and forgive all the transgressions of your humble {gender == "Plural" ? "servants" : "servant"}, {name}. At the moment of {genderToPronoun("dependentPossessive")} death, accept into Your merciful hands {genderToPronoun("dependentPossessive")} soul cleansed of all stain of sin, and place {genderToPronoun("object")} with Your Saints in the resplendent light of Your Kingdom. For You are our salvation and redemption, and we give glory to You, together with Your Eternal Father, and Your All-holy, Good, and Life-giving Spirit, now and forever, and unto ages of ages. Amen.</p>
               </Accordion.Body>
             </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>Prayers for Your Own Sickness</Accordion.Header>
+              <Accordion.Body>
+                <p>O Lord Jesus Christ, my God, who became Man and suffered death on the Cross for our salvation; visit me in my suffering and grant me grace and strength to bear that which is afflicting me even unto my salvation. Put far from me the spirit of disease, and every malady, pain, fever or wound to which they are bound. You who are the Healer of all, bring healing to me, of all manner of infirmity that plagues my body. And in Your tender mercy and compassion, grant, also, forgiveness of my sins which painfully wound my soul. Look upon these great weaknesses, but deal not with me according to my sins, but according to Your loving-kindness.</p>
+                <p>Grant wisdom and skill of hand to all who minister to me in this infirmity of body and bless all the means used for my recovery. For You are the Good God who loves mankind. And to You we ascribe all glory; to the Father, and to the Son, and to the Spirit, both now and ever and unto ages of ages. Amen.</p>
+              </Accordion.Body>
+            </Accordion.Item>
           </Accordion>
 
         </main></>
