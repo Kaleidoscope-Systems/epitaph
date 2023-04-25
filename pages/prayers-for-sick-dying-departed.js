@@ -30,7 +30,6 @@ function PrayerCustomizer({ onSave }) {
   const handleSave = () => {
     onSave({ name, gender });
     handleClose();
-    console.log(gender);
     return gender;
     
   };
@@ -103,7 +102,6 @@ export default function About() {
   }
 
   function genderToPronoun(context) {
-    console.log(context)
     if (gender == "Male"){
       return(malePronouns[context]);
     }
