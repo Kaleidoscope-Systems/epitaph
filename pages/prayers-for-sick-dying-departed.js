@@ -38,7 +38,7 @@ function PrayerCustomizer({ onSave }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Customize Prayer
+        Customize Prayers
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -138,7 +138,6 @@ export default function About() {
         <Button className='ms-3' variant="secondary" href="Booklet-of-Prayers-for-Sick-Dying-Departing.pdf" target='_blank'>
         Download PDF
         </Button>
-
 
         <Accordion defaultActiveKey={['0']} alwaysOpen className='mt-3'>
           <Accordion.Item eventKey="0">
