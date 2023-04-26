@@ -158,6 +158,24 @@ export default function About() {
                 <p>Grant wisdom and skill of hand to all who minister to me in this infirmity of body and bless all the means used for my recovery. For You are the Good God who loves mankind. And to You we ascribe all glory; to the Father, and to the Son, and to the Spirit, both now and ever and unto ages of ages. Amen.</p>
               </Accordion.Body>
             </Accordion.Item>
+            <Accordion.Item eventKey="3">
+              <Accordion.Header>Prayer When Sickness Increases</Accordion.Header>
+              <Accordion.Body>
+                <p>O Lord Jesus Christ, Our God and Savior, for our sake You were born; and for our sake You were hungry and thirsty; for our sake You were mocked, scourged, and crowned with thorns. For our sake You suffered and died on the cross, offering up Your divine life for our salvation.
+                  As You now grant Your {gender == "Plural" ? "servants" : "servant"}, {name} to share in Your sufferings, grant {genderToPronoun("object")} also to share in Your Grace. 
+                  May Your wounds heal the wounds of {name}'s sins. May Your precious Blood wash away the stains of {genderToPronoun("dependentPossessive")} sins. May Your Divine Righteousness purge {name} of every iniquity.
+                  Look upon {genderToPronoun("dependentPossessive")} faith in You, and the faith of us who pray, and do what is best for {name} according to Your mercy, rather than our merit. As sickness increases in him/her,
+                  so likewise increase Your Power and Strength in {name}.
+                  Let not {name}'s faith waver, nor {genderToPronoun("object")} hope to fail, nor {genderToPronoun("object")} love to grow cold. Let not the fear of suffering and
+                  death cause {name} to cast away {genderToPronoun("object")} hope in You, nor to
+                  lose courage and the will to fight every sickness and sin. Let {name} rather look always to You, even to the very end,
+                  and cry out, as You, Yourself cried from the cross to God:
+                  “Into Your hands, I commend My Spirit”, where all the saints continually shine with Your divine glory. For You
+                  have suffered that we might be healed. You have died that we might live Eternally and send up thanksgiving and praise
+                  to You, to the Father, Who sent You, and Your most Holy Spirit, who strengthens us to share Your passion, now and
+                  ever and unto ages of ages. Amen.</p>
+              </Accordion.Body>
+            </Accordion.Item>
           </Accordion>
 
         </main></>
