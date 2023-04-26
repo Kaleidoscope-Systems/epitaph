@@ -5,12 +5,17 @@ import '../styles/background.css'
 // add bootstrap css
 import 'bootstrap/dist/css/bootstrap.css'
 import { SSRProvider } from 'react-bootstrap';
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <SSRProvider>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout></SSRProvider>
-    )
-}
+      <GoogleAnalytics trackPageViews />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SSRProvider>
+  );
+};
+
+export default App;
