@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Accordion } from 'react-bootstrap';
+import { getDisplayName } from 'next/dist/shared/lib/utils';
 
 function SelectGender({ value, onChange }) {
   return (
@@ -97,8 +98,8 @@ export default function About() {
   const defaultPronouns = {
     subject: 'he/she',
     object: 'him/her',
-    dependentPossessive: 'his/her',
-    independentPossesive: 'his/hers',
+    dependentPossessive: '{genderToPronoun("dependentPossessive")}',
+    independentPossesive: '{genderToPronoun("dependentPossessive")}s',
     reflexive: 'himself/herself'
   }
 
@@ -174,6 +175,16 @@ export default function About() {
                   have suffered that we might be healed. You have died that we might live Eternally and send up thanksgiving and praise
                   to You, to the Father, Who sent You, and Your most Holy Spirit, who strengthens us to share Your passion, now and
                   ever and unto ages of ages. Amen.</p>
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+              <Accordion.Header>Prayer for One Terminally Ill</Accordion.Header>
+              <Accordion.Body>
+                <p>O Almighty God and Father of our Lord Jesus Christ, we pray to You for your Servant {name} whose sickness is bringing {genderToPronoun("object")} to the end of {genderToPronoun("dependentPossessive")} earthly life. You are
+                  the God whose only-begotten Son taught us that not even the smallest sparrow can fall without Your knowledge, and that You hold all creation in Your merciful arms.
+                  Look upon your servant {name} and allow this illness to be for the death only of those things which are the result of evil and sin. Let {name}'s thoughts be quieted with the peace and
+                  confidence of {genderToPronoun("dependentPossessive")} final deliverance into the fullness of Your love. Keep {genderToPronoun("dependentPossessive")} soul and body pure, and sanctify {genderToPronoun("object")} during the time {name} remains among us, that on the last day {name} may be raised up with all Your saints to live
+                  with You in never-ending glory. For to You belong all praise and worship, to the Father, and to the Son, and to the Holy Spirit, now and forever, and unto ages of ages. Amen.</p>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
