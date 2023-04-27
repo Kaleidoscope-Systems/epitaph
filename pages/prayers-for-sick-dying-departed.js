@@ -98,8 +98,8 @@ export default function About() {
   const defaultPronouns = {
     subject: 'he/she',
     object: 'him/her',
-    dependentPossessive: '{genderToPronoun("dependentPossessive")}',
-    independentPossesive: '{genderToPronoun("dependentPossessive")}s',
+    dependentPossessive: 'his/her',
+    independentPossesive: 'his/hers',
     reflexive: 'himself/herself'
   }
 
