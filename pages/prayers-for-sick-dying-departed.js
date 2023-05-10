@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Accordion } from 'react-bootstrap';
-import { getDisplayName } from 'next/dist/shared/lib/utils';
 
 function SelectGender({ value, onChange }) {
   return (
