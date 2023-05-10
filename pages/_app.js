@@ -6,15 +6,18 @@ import '../styles/background.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { SSRProvider } from 'react-bootstrap';
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import CookieConsent from "react-cookie-consent";
 
 const App = ({ Component, pageProps }) => {
   return (
     <SSRProvider>
       <GoogleAnalytics trackPageViews />
+      <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
       <Layout>
         <Component {...pageProps} />
       </Layout>
     </SSRProvider>
+    
   );
 };
 
