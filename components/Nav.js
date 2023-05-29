@@ -1,13 +1,34 @@
+import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function GlobalNav() {
+  const [societyShortName, setSocietyShortName] = useState("");
+
+  useEffect(() => {
+    fetchSocietyData();
+  }, []);
+
+  const fetchSocietyData = async () => {
+    try {
+      const response = await fetch("/api/v0.1.0/society", {
+        method: "POST",
+        cache: 'force-cache'
+      });
+      const data = await response.json();
+      const shortName = data.shortName; 
+      setSocietyShortName(shortName);
+    } catch (error) {
+      console.error("Failed to fetch society data", error);
+    }
+  };
+  
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Navbar.Brand>
+        <Navbar.Brand href="/">{societyShortName}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
