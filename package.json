@@ -19,5 +19,9 @@
     "react-cookie-consent": "^8.0.1",
     "react-dom": "18.2.0",
     "snyk": "^1.1146.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.14.1",
+    "prisma": "^4.14.1"
   }
 }
