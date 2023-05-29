@@ -3,27 +3,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import fetchSocietyData from '@/lib/fetchSocietyData';
 
 function GlobalNav() {
   const [societyShortName, setSocietyShortName] = useState("");
 
   useEffect(() => {
-    fetchSocietyData();
+    getNames();
   }, []);
 
-  const fetchSocietyData = async () => {
-    try {
-      const response = await fetch("/api/v0.1.0/society", {
-        method: "POST",
-        cache: 'force-cache'
-      });
-      const data = await response.json();
-      const shortName = data.shortName; 
-      setSocietyShortName(shortName);
-    } catch (error) {
-      console.error("Failed to fetch society data", error);
-    }
-  };
+  const getNames = async () => {
+    const societyData = await fetchSocietyData();
+    setSocietyShortName(societyData.shortName);
+};
   
   return (
     <Navbar bg="light" expand="lg">
