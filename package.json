@@ -1,6 +1,6 @@
 {
   "name": "epitaph",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,15 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/helper-module-imports": "^7.21.4",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
+    "next": "^13.4.4",
+    "next-auth": "^4.22.1",
     "nextjs-google-analytics": "^2.3.3",
-    "react": "18.2.0",
+    "npm": "^9.6.7",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-cookie-consent": "^8.0.1",
-    "react-dom": "18.2.0",
+    "react-dom": "^18.2.0",
     "snyk": "^1.1146.0"
   },
   "devDependencies": {

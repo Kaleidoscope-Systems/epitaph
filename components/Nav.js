@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import fetchSocietyData from '@/lib/fetchSocietyData';
+import LoginBtn from './login-btn';
 
 function GlobalNav() {
   const [societyShortName, setSocietyShortName] = useState("");
@@ -47,6 +48,7 @@ function GlobalNav() {
             </NavDropdown>
             <Nav.Link href="about-us">About Us</Nav.Link>
           </Nav>
+          <LoginBtn />
         </Navbar.Collapse>
       </Container>
     </Navbar>
