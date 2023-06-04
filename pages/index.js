@@ -1,29 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useEffect } from 'react';
-import fetchSocietyData from '@/lib/fetchSocietyData';
 //import Image from 'next/image'
 
-export default function Home() {
-  const [societyShortName, setSocietyShortName] = useState("");
-  const [societyLongName, setSocietyLongName] = useState("");
-
-  const getNames = async () => {
-      const societyData = await fetchSocietyData();
-      setSocietyLongName(societyData.longName);
-      setSocietyShortName(societyData.shortName);
-  };
-
-  useEffect(() => {
-    getNames();
-  });
-  
+export default function Home() { 
   return (
     <div className="container">
       <Head>
-        <title>{societyShortName}</title>
+        <title>{process.env.societyShortName}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={societyLongName} />
+        <meta name="description" content={process.env.societyLongName} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
