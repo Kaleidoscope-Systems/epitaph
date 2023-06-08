@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head'
 import Image from 'react-bootstrap/Image'
 import styles from '../styles/Layout.module.css'
