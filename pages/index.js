@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>{process.env.societyShortName}</title>
+        <title>{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={process.env.societyLongName} />
+        <meta name="description" content={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
