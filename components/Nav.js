@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LoginBtn from './login-btn';
 
-function GlobalNav() { 
+function GlobalNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
