@@ -13,7 +13,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
     <SSRProvider>
       <GoogleAnalytics trackPageViews />
-      <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
+      <CookieConsent>This website uses cookies to understand the user experience.</CookieConsent>
       <SessionProvider session={session}>
       <Layout>
         <Component {...pageProps} />
