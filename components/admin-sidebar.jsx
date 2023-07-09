@@ -12,7 +12,7 @@ export default function AdminSidebar (){
 	const slug = router.pathname;
 
 	return (
-		<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '280px', 'overflow-x': 'auto', 'overflow-y': 'hidden'}}>
+		<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '280px', overflowX: 'auto', overflowY: 'hidden'}}>
 			<h2>Admin</h2>
 			<hr/>
 			<ul className="nav nav-pills flex-column mb-auto">
