@@ -16,6 +16,14 @@ export default function Records() {
 				</Head>
 				<main className="d-flex flex-nowrap" style={{height: '100vh'}}>
 					<AdminSidebar />
+					<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '100%'}}>
+						<h2>Records</h2>
+						<div className="row">
+							<div className="col col-12">
+								
+							</div>
+						</div>
+					</div>
 				</main>
 			</>
 		)
