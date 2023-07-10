@@ -4,6 +4,7 @@ import {
 	faGauge,
 	faLayerGroup,
 	faUserCircle,
+	faGear,
 } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from "next/router"
 
@@ -36,7 +37,7 @@ export default function AdminSidebar (){
 				</li>
 				<li>
 					<Link href="/admin/settings" className={slug.includes("admin/settings", 1) ? "nav-link active" : "nav-link link-body-emphasis"}>
-						<FontAwesomeIcon icon={faUserCircle} className="pe-2"></FontAwesomeIcon>
+						<FontAwesomeIcon icon={faGear} className="pe-2"></FontAwesomeIcon>
 							Settings
 					</Link>
 				</li>
