@@ -4,8 +4,8 @@ import AdminSidebar from '@/components/admin-sidebar'
 import AccessDenied from '@/components/access-denied'
 
 export default function Dashboard() {
-	const { data: session, caps } = useSession()
-	session && session.caps
+	const { data: session } = useSession()
+	/* session && session.caps
 		? (() => {
 				try {
 					return JSON.parse(session.caps);
@@ -14,8 +14,8 @@ export default function Dashboard() {
 					return {};
 				}
 			})()
-		: {};
-	if (!session && !caps.viewDashboard) return (
+		: {}; */
+	if (!session || !caps.viewDashboard) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
