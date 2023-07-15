@@ -22,7 +22,7 @@ export const authOptions = {
         where: {
           email: user.email,
         },
-      });
+      }).caps();
       session.user.caps = caps;
       return session;
     }
