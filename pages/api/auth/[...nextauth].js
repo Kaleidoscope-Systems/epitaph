@@ -15,6 +15,18 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  callbacks: {
+    async session({ session, user }) {
+      session.user = user;
+      const caps = await prisma.user.findUnique({
+        where: {
+          email: user.email,
+        },
+      });
+      session.user.caps = caps;
+      return session;
+    }
+  },
 }
 
 export default NextAuth(authOptions)

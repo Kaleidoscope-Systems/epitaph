@@ -5,7 +5,17 @@ import AccessDenied from '@/components/access-denied'
 
 export default function Dashboard() {
 	const { data: session } = useSession()
-	if (!session) return (
+	session && session.user.caps
+		? (() => {
+				try {
+					return JSON.parse(session.user.caps);
+				} catch (e) {
+					console.error('Parse error', session.user.caps);
+					return {};
+				}
+			})()
+		: {};
+	if (!session && !caps.viewDashboard) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
