@@ -14,7 +14,7 @@ export default function Dashboard() {
 		</Head><AccessDenied /></>)
 	if (session) {
 		return (
-			<><Head>  
+			<><Head>
 				<title>Dashboard - Ss. Nicodemus & Joseph Burial Society</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
