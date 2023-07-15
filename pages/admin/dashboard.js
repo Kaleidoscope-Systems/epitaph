@@ -15,7 +15,7 @@ export default function Dashboard() {
 				}
 			})()
 		: {}; */
-	if (!session || !caps.viewDashboard) return (
+	if (!session) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
