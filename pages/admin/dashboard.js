@@ -4,13 +4,13 @@ import AdminSidebar from '@/components/admin-sidebar'
 import AccessDenied from '@/components/access-denied'
 
 export default function Dashboard() {
-	const { data: session } = useSession()
-	session && session.user.caps
+	const { data: session, caps } = useSession()
+	session && session.caps
 		? (() => {
 				try {
-					return JSON.parse(session.user.caps);
+					return JSON.parse(session.caps);
 				} catch (e) {
-					console.error('Parse error', session.user.caps);
+					console.error('Parse error', session.caps);
 					return {};
 				}
 			})()
