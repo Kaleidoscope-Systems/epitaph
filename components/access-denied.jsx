@@ -10,7 +10,7 @@ export default function AccessDenied() {
 				<div className="row position-absolute top-50 start-50 translate-middle">
 					<h1>Access Denied</h1>
 					<div className="col col-12">
-						You must sign in to access this page.<br/>
+						<div className="pb-1">You must sign in to access this page.</div><br/>
 						<LoginBtn />
 					</div>
 				</div>
@@ -25,7 +25,7 @@ export default function AccessDenied() {
 			<div className="row position-absolute top-50 start-50 translate-middle">
 					<h1>Access Denied</h1>
 					<div className="col col-12">
-						You must sign in to access this page.<br/>
+					<div className="pb-1">You do not have access to this page. Please contact the administrator if this doesn&apos;t sound right.</div><br/>
 						<LoginBtn />
 					</div>
 				</div>
