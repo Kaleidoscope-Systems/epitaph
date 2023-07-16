@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.36.0",
-    "eslint-config-next": "13.2.4",
+    "eslint-config-next": "^13.4.10",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",
     "nextjs-google-analytics": "^2.3.3",
