@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default function Custom404() {
     return <div className="p-5 mb-4 bg-light rounded-3">
         <Head>
-			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
+			<title>404 - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
