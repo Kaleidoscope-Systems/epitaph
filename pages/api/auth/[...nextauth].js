@@ -1,7 +1,12 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const authOptions = {
+  adapter: PrismaAdapter(prisma),
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
@@ -10,6 +15,18 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  /* callbacks: {
+    async session({ session, user }) {
+      session.user = user;
+      const caps = await prisma.user.findUnique({
+        where: {
+          email: user.email,
+        },
+      }).caps();
+      session.user.caps = caps;
+      return session;
+    }
+  }, */
 }
 
 export default NextAuth(authOptions)

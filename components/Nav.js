@@ -18,7 +18,7 @@ function GlobalNav() {
             </NavDropdown>
             <NavDropdown title="Plan" id="basic-nav-dropdown">
               <NavDropdown.Item href="/planning-discussion-guide">Planning and Discussion Guide</NavDropdown.Item>
-              <NavDropdown.Item href="Complete-Planning-Documents-for-Family-Records.pdf" target="_blank">
+              <NavDropdown.Item href="/Complete-Planning-Documents-for-Family-Records.pdf" target="_blank">
                 Planning Documents
               </NavDropdown.Item>
               {/* <NavDropdown.Divider />
@@ -27,13 +27,13 @@ function GlobalNav() {
               </NavDropdown.Item> */}
             </NavDropdown>
             <NavDropdown title="Pray" id="basic-nav-dropdown">
-              <NavDropdown.Item href="Vigil-Psalms-for-the-Departed-Prayers-of-the-Hours.pdf" target="_blank">Vigil Psalms</NavDropdown.Item>
+              <NavDropdown.Item href="/Vigil-Psalms-for-the-Departed-Prayers-of-the-Hours.pdf" target="_blank">Vigil Psalms</NavDropdown.Item>
               <NavDropdown.Item href="/prayers-for-sick-dying-departed">
                 Prayers for the Sick, Dying, and Departed
               </NavDropdown.Item>
               <NavDropdown.Item href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="about-us">About Us</Nav.Link>
+            <Nav.Link href="/about-us">About Us</Nav.Link>
           </Nav>
           <LoginBtn />
         </Navbar.Collapse>

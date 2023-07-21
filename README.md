@@ -1,6 +1,6 @@
 [![Node.js CI](https://github.com/Kaleidoscope-Systems/epitaph/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Kaleidoscope-Systems/epitaph/actions/workflows/node.js.yml)
 
-Epitaph is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). While it's only informational pages right now, we hope to make it into a full application for managing a burial society and the storing the last wishes of the faithful.
+Epitaph is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). While it's only informational pages right now, we hope to make it into a full application for managing a burial society and storing the last wishes of the faithful.
 
 ## Getting Started
 
