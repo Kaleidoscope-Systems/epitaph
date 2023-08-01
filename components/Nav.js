@@ -1,44 +1,46 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import LoginBtn from './login-btn';
+import Link from 'next/link';
 
 function GlobalNav() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Learn" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/ancient-christian-burial-practices">Ancient Christian Burial Practices</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Plan" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/planning-discussion-guide">Planning and Discussion Guide</NavDropdown.Item>
-              <NavDropdown.Item href="/Complete-Planning-Documents-for-Family-Records.pdf" target="_blank">
-                Planning Documents
-              </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
-            </NavDropdown>
-            <NavDropdown title="Pray" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/Vigil-Psalms-for-the-Departed-Prayers-of-the-Hours.pdf" target="_blank">Vigil Psalms</NavDropdown.Item>
-              <NavDropdown.Item href="/prayers-for-sick-dying-departed">
-                Prayers for the Sick, Dying, and Departed
-              </NavDropdown.Item>
-              <NavDropdown.Item href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="/about-us">About Us</Nav.Link>
-          </Nav>
-          <LoginBtn />
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Fifth navbar example">
+    <div className="container-fluid">
+      <Link className="navbar-brand" href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Link>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse" id="navbarsExample05">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Learn</a>
+            <ul className="dropdown-menu">
+              <li><Link className="dropdown-item" href="/ancient-christian-burial-practices">Ancient Christian Burial Practices</Link></li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Plan</a>
+            <ul className="dropdown-menu">
+              <li><Link className="dropdown-item" href="/planning-discussion-guide">Planning and Discussion Guide</Link></li>
+              <li><Link className="dropdown-item" href="/Complete-Planning-Documents-for-Family-Records.pdf">Planning Documents</Link></li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Pray</a>
+            <ul className="dropdown-menu">
+              <li><Link className="dropdown-item" href="/Vigil-Psalms-for-the-Departed-Prayers-of-the-Hours.pdf" target="_blank">Vigil Psalms</Link></li>
+              <li><Link className="dropdown-item" href="/prayers-for-sick-dying-departed">Prayers for the Sick, Dying, and Departed</Link></li>
+              <li><Link className="dropdown-item" href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</Link></li>
+            </ul>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" href="/about-us">About Us</Link>
+          </li>
+        </ul>
+        <LoginBtn />
+      </div>
+    </div>
+  </nav>
   );
 }
 
