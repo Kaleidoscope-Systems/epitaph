@@ -13,7 +13,7 @@ export default function AdminSidebar (){
 	const slug = router.pathname;
 
 	return (
-		<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '280px', overflowX: 'auto', overflowY: 'hidden'}}>
+		<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary border-end border-dark-subtle" style={{width: '280px', overflowX: 'auto', overflowY: 'hidden'}}>
 			<ul className="nav nav-pills flex-column mb-auto">
 				<li>
 					<Link href="/admin/dashboard" className={slug.includes("admin/dashboard", 1) ? "nav-link active" : "nav-link link-body-emphasis"} aria-current="page">
