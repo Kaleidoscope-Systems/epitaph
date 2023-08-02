@@ -4,7 +4,7 @@ import AdminSidebar from '@/components/admin-sidebar'
 import AccessDenied from '@/components/access-denied'
 
 export default function Dashboard() {
-	const { data: session, loading } = useSession()
+	const { data: session, status } = useSession()
 	/* session && session.caps
 		? (() => {
 				try {
@@ -15,14 +15,24 @@ export default function Dashboard() {
 				}
 			})()
 		: {}; */
-	if (!session && !loading) return (
+	if (!session && 'unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head><AccessDenied /></>)
-	if (session && !loading) return (
+	if ('loading' === status) return (<>
+		<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '100%'}}>
+			<h2>Loading...</h2>
+			<div className="row">
+				<div className="col col-12">
+					
+				</div>
+			</div>
+		</div></>
+	)
+	if (session && 'authenticated' === status) return (
 		<><Head>
 			<title>Dashboard - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
