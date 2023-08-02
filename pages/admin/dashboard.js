@@ -39,16 +39,16 @@ export default function Dashboard() {
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-			<main className="d-flex flex-nowrap" style={{height: '100vh'}}>
-				<AdminSidebar />
-				<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '100%'}}>
-					<h2>Dashboard</h2>
-					<div className="row">
-						<div className="col col-12">
-							
-						</div>
+		<main className="d-flex flex-nowrap" style={{height: '100vh'}}>
+			<AdminSidebar />
+			<div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{width: '100%'}}>
+				<h2>Dashboard</h2>
+				<div className="row">
+					<div className="col col-12">
+						
 					</div>
 				</div>
-			</main></>
+			</div>
+		</main></>
 	)
 }
