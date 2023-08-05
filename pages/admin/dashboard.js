@@ -17,6 +17,7 @@ export default function Dashboard() {
 					}
 				})()
 			: {};
+	if ('loading' === status) return (<Loading />)
 	if (!session && 'unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
@@ -24,7 +25,6 @@ export default function Dashboard() {
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head><AccessDenied /></>)
-	if ('loading' === status) return (<Loading />)
 	if (session && 'authenticated' === status) return (
 		<><Head>
 			<title>Dashboard - Ss. Nicodemus & Joseph Burial Society</title>
