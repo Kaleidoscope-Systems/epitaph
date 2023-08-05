@@ -17,7 +17,6 @@ export default function Dashboard() {
 					}
 				})()
 			: {};
-	console.log(caps);
 	if (!session && 'unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
