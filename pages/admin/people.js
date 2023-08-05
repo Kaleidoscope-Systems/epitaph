@@ -2,17 +2,30 @@ import Head from 'next/head'
 import {useSession} from "next-auth/react"
 import AdminSidebar from '@/components/admin-sidebar'
 import AccessDenied from '@/components/access-denied'
+import Loading from '@/components/loading'
 
-export default function Records() {
-	const { data: session } = useSession()
-	if (!session) return (
+export default function People() {
+	const { data: session, status } = useSession()
+	const caps =
+		session && session.user.caps
+			? (() => {
+					try {
+						return JSON.parse(session.user.caps);
+					} catch (e) {
+						console.error('Parse error', session.user.caps);
+						return {};
+					}
+				})()
+			: {};
+	if ('loading' === status) return (<Loading />)
+	if ('unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head><AccessDenied /></>)
-	if (session) {
+	if ('authenticated' === status) {
 		return (
 			<>
 				<Head>  
