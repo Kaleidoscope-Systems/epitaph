@@ -4,7 +4,7 @@ import AdminSidebar from '@/components/admin-sidebar'
 import AccessDenied from '@/components/access-denied'
 import Loading from '@/components/loading'
 
-export default function Records() {
+export default function People() {
 	const { data: session, status } = useSession()
 	const caps =
 		session && session.user.caps
