@@ -18,14 +18,14 @@ export default function Dashboard() {
 				})()
 			: {};
 	if ('loading' === status) return (<Loading />)
-	if (!session && 'unauthenticated' === status) return (
+	if ('unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head><AccessDenied /></>)
-	if (session && 'authenticated' === status) return (
+	if ('authenticated' === status) return (
 		<><Head>
 			<title>Dashboard - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
