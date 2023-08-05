@@ -21,19 +21,21 @@ export const authOptions = {
   ],
   pages: {
     signIn: '/auth/signin',
-  }
-  /* callbacks: {
+  },
+  callbacks: {
     async session({ session, user }) {
+      //retrieve user from database
       session.user = user;
-      const caps = await prisma.user.findUnique({
+      const person = await prisma.user.findUnique({
         where: {
           email: user.email,
         },
-      }).caps();
-      session.user.caps = caps;
+      });
+      session.user = Object.assign(session.user, person);
       return session;
-    }
-  }, */
+    },
+
+  }
 }
 
 export default NextAuth(authOptions)
