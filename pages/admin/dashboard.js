@@ -6,16 +6,18 @@ import Loading from '@/components/loading'
 
 export default function Dashboard() {
 	const { data: session, status } = useSession()
-	/* session && session.caps
-		? (() => {
-				try {
-					return JSON.parse(session.caps);
-				} catch (e) {
-					console.error('Parse error', session.caps);
-					return {};
-				}
-			})()
-		: {}; */
+	const caps =
+		session && session.user.caps
+			? (() => {
+					try {
+						return JSON.parse(session.user.caps);
+					} catch (e) {
+						console.error('Parse error', session.user.caps);
+						return {};
+					}
+				})()
+			: {};
+	console.log(caps);
 	if (!session && 'unauthenticated' === status) return (
 		<><Head>
 			<title>Access Denied - Ss. Nicodemus & Joseph Burial Society</title>
