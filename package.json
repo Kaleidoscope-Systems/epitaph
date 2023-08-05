@@ -33,7 +33,7 @@
     "snyk": "^1.1146.0"
   },
   "devDependencies": {
-    "@prisma/client": "^5.0.0",
-    "prisma": "^5.0.0"
+    "@prisma/client": "^5.1.1",
+    "prisma": "^5.1.1"
   }
 }
