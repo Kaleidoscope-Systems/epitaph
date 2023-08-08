@@ -22,7 +22,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "next": "^13.4.4",
-    "next-auth": "^4.22.1",
+    "next-auth": "^4.22.2",
     "nextjs-google-analytics": "^2.3.3",
     "npm": "^9.6.7",
     "react": "^18.2.0",
