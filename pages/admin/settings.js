@@ -12,7 +12,8 @@ export default function Settings() {
 					try {
 						return JSON.parse(session.user.caps);
 					} catch (e) {
-						console.error('Parse error', session.user.caps);
+						console.error('Parse error:', e);
+       	   	console.error('Invalid JSON:', session.user.caps);
 						return {};
 					}
 				})()
