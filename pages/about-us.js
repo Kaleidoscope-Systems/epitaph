@@ -30,9 +30,7 @@ export default function About() {
         <h1>
             About Us
         </h1>
-        <p>
-          {aboutUsText}
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: aboutUsText }} />
         </div>
       </main>
     </div>
