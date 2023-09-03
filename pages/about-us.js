@@ -8,8 +8,8 @@ export default function About() {
   const [aboutUsText, setAboutUsText] = useState("");
 
   const getAboutUsText = async () => {
-      const data = await fetchAboutUs();
-      setAboutUsText(data);
+      const contentData = await fetchAboutUs();
+      contentData && setAboutUsText(contentData.value);
   };
 
   useEffect(() => {
