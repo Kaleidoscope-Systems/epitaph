@@ -42,18 +42,22 @@ export default function AdminSidebar (){
 							Records
 					</Link>
 				</li>
-				<li>
+				{caps.viewPeople && (
+					<li>
 					<Link href="/admin/people" className={slug.includes("admin/people", 1) ? "nav-link active" : "nav-link link-body-emphasis"}>
 						<FontAwesomeIcon icon={faUserCircle} className="pe-2"></FontAwesomeIcon>
 							People
 					</Link>
 				</li>
-				<li>
+				)}
+				{caps.viewSettings && (
+					<li>
 					<Link href="/admin/settings" className={slug.includes("admin/settings", 1) ? "nav-link active" : "nav-link link-body-emphasis"}>
 						<FontAwesomeIcon icon={faGear} className="pe-2"></FontAwesomeIcon>
 							Settings
 					</Link>
 				</li>
+				)}
 			</ul>
 		</div>
 	)
