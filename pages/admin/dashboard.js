@@ -25,7 +25,7 @@ export default function Dashboard() {
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head><AccessDenied /></>)
-	if ('authenticated' === status) return (
+	if ('authenticated' === status && caps.viewDashboard) return (
 		<><Head>
 			<title>Dashboard - Ss. Nicodemus & Joseph Burial Society</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
