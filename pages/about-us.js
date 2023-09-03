@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import { PrismaClient } from '@prisma/client'
 //import Image from 'next/image'
 import styles from '../styles/Layout.module.css'
+
+const prisma = new PrismaClient();
 
 export default function About() {
     return (
@@ -18,7 +21,11 @@ export default function About() {
             About Us
         </h1>
         <p>
-            <strong>The Ss. Nicodemus & Joseph Orthodox Christian Burial Society of Northern Colorado</strong> was established in 2013 to assist those desiring to follow Ancient Orthodox Christian Practices in pre-planning their burial or that of a loved one. It is a Pan-Orthodox society made up of Orthodox volunteers from Northern Colorado who view the society’s work as a ministry to the grieving and a service to departed Christian brothers and sisters in preparing them to attend the heavenly banquet with Christ their King and Savior.
+           {prisma.content.findUniqueOrThrow({
+              where: {
+                commonName: 'aboutUs',
+              },
+            })}
         </p>
         </div>
       </main>
