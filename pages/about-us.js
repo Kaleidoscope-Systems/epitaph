@@ -1,14 +1,14 @@
 import Head from 'next/head'
 //import Image from 'next/image'
 import styles from '../styles/Layout.module.css'
-import fetchAboutUs from '@/lib/content'
 import { useEffect, useState } from 'react'
+import fetchContent from '@/lib/content';
 
 export default function About() {
   const [aboutUsText, setAboutUsText] = useState("");
 
   const getAboutUsText = async () => {
-      const contentData = await fetchAboutUs();
+      const contentData = await fetchContent('aboutUs');
       contentData && setAboutUsText(contentData.value);
   };
 
