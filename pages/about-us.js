@@ -1,17 +1,21 @@
 import Head from 'next/head'
-import { PrismaClient } from '@prisma/client'
 //import Image from 'next/image'
 import styles from '../styles/Layout.module.css'
-
-const prisma = new PrismaClient();
-
-const aboutUsText = await prisma.content.findUniqueOrThrow({
-  where: {
-    commonName: 'aboutUs',
-  },
-})  
+import fetchAboutUs from '@/lib/content'
+import { useEffect, useState } from 'react'
 
 export default function About() {
+  const [aboutUsText, setAboutUsText] = useState("");
+
+  const getAboutUsText = async () => {
+      const data = await fetchAboutUs();
+      setAboutUsText(data);
+  };
+
+  useEffect(() => {
+    getAboutUsText();
+  });
+
   return (
     <div>
       <Head>
@@ -27,7 +31,7 @@ export default function About() {
             About Us
         </h1>
         <p>
-            {aboutUsText}
+          {aboutUsText}
         </p>
         </div>
       </main>
