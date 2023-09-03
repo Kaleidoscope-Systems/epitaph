@@ -6,18 +6,17 @@ import Loading from '@/components/loading'
 
 export default function Settings() {
 	const { data: session, status } = useSession()
-	const caps = session.user.caps
-		/* session && session.user.caps
+	const caps = 
+		session && session.user.caps
 			? (() => {
 					try {
-						return JSON.parse(session.user.caps);
+						return session.user.caps;
 					} catch (e) {
-						console.error('Parse error:', e);
-       	   	console.error('Invalid JSON:', session.user.caps);
+						console.error('Error getting user capabilities:', e);
 						return {};
 					}
 				})()
-			: {}; */
+			: {};
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
 		<><Head>
