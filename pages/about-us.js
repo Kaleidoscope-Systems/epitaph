@@ -5,15 +5,15 @@ import styles from '../styles/Layout.module.css'
 
 const prisma = new PrismaClient();
 
-const aboutUsText = prisma.content.findUniqueOrThrow({
+const aboutUsText = await prisma.content.findUniqueOrThrow({
   where: {
     commonName: 'aboutUs',
   },
-})
+})  
 
 export default function About() {
-    return (
-        <div>
+  return (
+    <div>
       <Head>
         <title>About Us - Ss. Nicodemus & Joseph Burial Society</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,10 +27,10 @@ export default function About() {
             About Us
         </h1>
         <p>
-           {aboutUsText}
+            {aboutUsText}
         </p>
         </div>
       </main>
     </div>
-    )
+  )
 }
