@@ -5,6 +5,12 @@ import styles from '../styles/Layout.module.css'
 
 const prisma = new PrismaClient();
 
+const aboutUsText = prisma.content.findUniqueOrThrow({
+  where: {
+    commonName: 'aboutUs',
+  },
+})
+
 export default function About() {
     return (
         <div>
@@ -21,11 +27,7 @@ export default function About() {
             About Us
         </h1>
         <p>
-           {prisma.content.findUniqueOrThrow({
-              where: {
-                commonName: 'aboutUs',
-              },
-            })}
+           {aboutUsText}
         </p>
         </div>
       </main>
