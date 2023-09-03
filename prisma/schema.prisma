@@ -18,8 +18,7 @@ model Society {
 }
 
 model Content {
-  id          String  @id @default(cuid())
-  commonName  String
+  commonName  String  @unique
   value       String
 }
 
