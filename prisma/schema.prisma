@@ -17,6 +17,12 @@ model Society {
   address String
 }
 
+model Content {
+  id          String  @id @default(cuid())
+  commonName  String  @unique
+  value       String
+}
+
 model Account {
   id                 String  @id @default(cuid())
   userId             String

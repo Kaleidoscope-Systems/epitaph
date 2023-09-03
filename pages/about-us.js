@@ -1,10 +1,23 @@
 import Head from 'next/head'
 //import Image from 'next/image'
 import styles from '../styles/Layout.module.css'
+import { useEffect, useState } from 'react'
+import fetchContent from '@/lib/content';
 
 export default function About() {
-    return (
-        <div>
+  const [aboutUsText, setAboutUsText] = useState("");
+
+  const getAboutUsText = async () => {
+      const contentData = await fetchContent('aboutUs');
+      contentData && setAboutUsText(contentData.value);
+  };
+
+  useEffect(() => {
+    getAboutUsText();
+  });
+
+  return (
+    <div>
       <Head>
         <title>About Us - Ss. Nicodemus & Joseph Burial Society</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,11 +30,9 @@ export default function About() {
         <h1>
             About Us
         </h1>
-        <p>
-            <strong>The Ss. Nicodemus & Joseph Orthodox Christian Burial Society of Northern Colorado</strong> was established in 2013 to assist those desiring to follow Ancient Orthodox Christian Practices in pre-planning their burial or that of a loved one. It is a Pan-Orthodox society made up of Orthodox volunteers from Northern Colorado who view the society’s work as a ministry to the grieving and a service to departed Christian brothers and sisters in preparing them to attend the heavenly banquet with Christ their King and Savior.
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: aboutUsText }} />
         </div>
       </main>
     </div>
-    )
+  )
 }
