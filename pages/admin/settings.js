@@ -6,8 +6,8 @@ import Loading from '@/components/loading'
 
 export default function Settings() {
 	const { data: session, status } = useSession()
-	const caps =
-		session && session.user.caps
+	const caps = session.user.caps
+		/* session && session.user.caps
 			? (() => {
 					try {
 						return JSON.parse(session.user.caps);
@@ -17,7 +17,7 @@ export default function Settings() {
 						return {};
 					}
 				})()
-			: {};
+			: {}; */
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
 		<><Head>
@@ -41,7 +41,7 @@ export default function Settings() {
 						<h2>Settings</h2>
 						<div className="row">
 							<div className="col col-12">
-								
+								{caps[editPeople]}
 							</div>
 						</div>
 					</div>
