@@ -40,7 +40,7 @@ export default function Settings() {
 						<h2>Settings</h2>
 						<div className="row">
 							<div className="col col-12">
-								{caps[editPeople]}
+								{caps['editPeople'] ? "Can edit" : "No editing for you!"}
 							</div>
 						</div>
 					</div>
