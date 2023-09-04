@@ -28,7 +28,8 @@ function GlobalNav() {
   return (
     <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Navbar">
     <div className="container-fluid">
-      {caps?.viewDashboard || caps?.viewPeople || caps?.viewSettings && (
+      <>
+      {caps?.viewDashboard || caps?.viewPeople || caps?.viewSettings ? (
         <div className="dropdown">
           <button
             className={`btn btn-${btnClass} navbar-brand ms-3`}
@@ -72,7 +73,10 @@ function GlobalNav() {
             )}
           </ul>
         </div>
+      ) : (
+        <></>
       )}
+      </>
 
       <Link className="navbar-brand" href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
