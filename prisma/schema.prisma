@@ -23,6 +23,25 @@ model Content {
   value       String
 }
 
+model People {
+  id              String @id @default(cuid())
+  givenName       String
+  familyName      String
+  displayName     String?
+  email           String?
+  mobilePhone     String?
+  homePhone       String?
+  workPhone       String?
+  mailingAddress  String?
+  physicalAddress String?
+  organDonor      Boolean?
+  birthPlace      String?
+  dateOfBirth     DateTime? @db.Date
+  maritalStatus   String?
+  occupation      String?
+  executor        String?
+}
+
 model Account {
   id                 String  @id @default(cuid())
   userId             String
