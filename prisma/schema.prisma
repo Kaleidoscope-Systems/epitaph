@@ -37,7 +37,7 @@ model People {
   organDonor      Boolean?
   birthPlace      String?
   dateOfBirth     DateTime? @db.Date
-  maritalStatus   String?
+  maritalStatus   maritalStatus?
   occupation      String?
   executor        String?
 }
@@ -86,4 +86,11 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum maritalStatus {
+  married
+  single
+  widowed
+  divorced
 }
