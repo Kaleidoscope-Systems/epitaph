@@ -11,16 +11,35 @@ datasource db {
 }
 
 model Society {
-  id Int @id @default(autoincrement())
-  longName String @unique
+  id        Int @id @default(autoincrement())
+  longName  String @unique
   shortName String
-  address String
+  address   String
 }
 
 model Content {
   id          String  @id @default(cuid())
   commonName  String  @unique
   value       String
+}
+
+model People {
+  id              String @id @default(cuid())
+  givenName       String
+  familyName      String
+  displayName     String?
+  email           String?
+  mobilePhone     String?
+  homePhone       String?
+  workPhone       String?
+  mailingAddress  String?
+  physicalAddress String?
+  organDonor      Boolean?
+  birthPlace      String?
+  dateOfBirth     DateTime? @db.Date
+  maritalStatus   maritalStatus?
+  occupation      String?
+  executor        String?
 }
 
 model Account {
@@ -67,4 +86,11 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum maritalStatus {
+  married
+  single
+  widowed
+  divorced
 }

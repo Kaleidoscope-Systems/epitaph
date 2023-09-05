@@ -1,10 +1,83 @@
+import { faGauge, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import LoginBtn from './login-btn';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGrid, faCogs } from '@fortawesome/pro-solid-svg-icons';
+
+let bgColor;
+let btnClass;
+let searchPlaceholder;
+
+btnClass = "fireweed";
 
 function GlobalNav() {
+  const { data: session, status } = useSession()
+	const caps = 
+		session && session.user.caps
+			? (() => {
+					try {
+						return session.user.caps;
+					} catch (e) {
+						console.error('Error getting user capabilities:', e);
+						return {};
+					}
+				})()
+			: {};
+
   return (
-    <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Fifth navbar example">
+    <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Navbar">
     <div className="container-fluid">
+      <>
+      {caps?.viewDashboard || caps?.viewPeople || caps?.viewSettings ? (
+        <div className="dropdown">
+          <button
+            className={`btn btn-${btnClass} navbar-brand ms-3`}
+            type="button"
+            id="module-context"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style={{ borderRadius: '.5rem' }}
+          >
+            <FontAwesomeIcon icon={faGrid} fixedWidth />
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="module-context" style={{ fontSize: '1.25rem' }}>
+            <li>
+              <Link href="/" className='dropdown-item'>
+                {process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}
+              </Link>
+            </li>
+            {caps?.viewDashboard && (
+              <li>
+                <Link href="/admin/dashboard" className='dropdown-item'>
+                  <FontAwesomeIcon icon={faGauge} fixedWidth className="me-2" />
+                  Dashboard
+                </Link>
+              </li>
+            )}
+            {caps?.viewPeople && (
+              <li>
+                <Link href="/admin/people" className='dropdown-item'>
+                  <FontAwesomeIcon icon={faUserCircle} fixedWidth className="me-2" />
+                  People
+                </Link>
+              </li>
+            )}
+            {caps?.viewSettings && (
+              <li>
+                <Link href="/admin/settings" className="dropdown-item">
+                  <FontAwesomeIcon icon={faCogs} fixedWidth className="me-2" />
+                  Settings
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
+      ) : (
+        <></>
+      )}
+      </>
+
       <Link className="navbar-brand" href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
