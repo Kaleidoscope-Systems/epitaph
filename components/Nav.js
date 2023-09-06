@@ -10,7 +10,7 @@ let bgColor;
 let btnClass;
 let searchPlaceholder;
 
-export default function GlobalNav({ module }) {
+export default function GlobalNav({ appModule }) {
   const { data: session, status } = useSession()
 	const caps = 
 		session && session.user.caps
@@ -23,7 +23,7 @@ export default function GlobalNav({ module }) {
 					}
 				})()
 			: {};
-  switch (module) {
+  switch (appModule) {
     case 'people':
       bgColor = 'var(--azure)';
       btnClass = 'azure';
@@ -34,7 +34,7 @@ export default function GlobalNav({ module }) {
     event.preventDefault();
     event.target.s.focus();
     event.target.s.select();
-    switch (module) {
+    switch (appModule) {
       case 'people':
         router.push(`/people/search/${event.target.s.value}`);
         break;
@@ -126,7 +126,7 @@ export default function GlobalNav({ module }) {
           </li>
         </ul>
         <div className="collapse navbar-collapse">
-          {('people' == module && caps?.viewPeople) && (
+          {('people' == appModule && caps?.viewPeople) && (
                 <form className="form-inline ms-auto my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
                   <div className="input-group mr-sm-3">
                     <input

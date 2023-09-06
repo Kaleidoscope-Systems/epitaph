@@ -5,7 +5,7 @@ import styles from '../styles/Layout.module.css'
 import adminStyles from '../styles/LayoutAdmin.module.css'
 import { useRouter } from 'next/router'
 
-const Layout = ({children, title = 'Ss. Nicodemus & Joseph Burial Society', module}) => {
+const Layout = ({children, title = 'Ss. Nicodemus & Joseph Burial Society', appModule}) => {
     const router = useRouter()
     const slug = router.pathname;
     if (slug.includes("admin", 1)) {
@@ -17,14 +17,14 @@ const Layout = ({children, title = 'Ss. Nicodemus & Joseph Burial Society', modu
 			<meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-        <GlobalNav module={module} /><div className={adminStyles.container}>
+        <GlobalNav appModule={appModule} /><div className={adminStyles.container}>
             <main className={adminStyles.main}>
                 {children}</main>
         </div><Footer /></>
         )
     }
     return (
-        <><GlobalNav module={module}/><div className={styles.container}>
+        <><GlobalNav appModule={appModule}/><div className={styles.container}>
             <main className={styles.main}>
                 {children}</main>
         </div><Footer /></>
