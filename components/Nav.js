@@ -3,15 +3,14 @@ import LoginBtn from './login-btn';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrid, faCogs } from '@fortawesome/pro-solid-svg-icons';
+import { faGrid, faCogs, faSearch } from '@fortawesome/pro-solid-svg-icons';
+import router from 'next/router';
 
 let bgColor;
 let btnClass;
 let searchPlaceholder;
 
-btnClass = "fireweed";
-
-function GlobalNav() {
+export default function GlobalNav({ module }) {
   const { data: session, status } = useSession()
 	const caps = 
 		session && session.user.caps
@@ -24,7 +23,23 @@ function GlobalNav() {
 					}
 				})()
 			: {};
-
+  switch (module) {
+    case 'people':
+      bgColor = 'var(--azure)';
+      btnClass = 'azure';
+      searchPlaceholder = 'Search People';
+      break;
+  }
+  const navSearch = async (event) => {
+    event.preventDefault();
+    event.target.s.focus();
+    event.target.s.select();
+    switch (module) {
+      case 'people':
+        router.push(`/people/search/${event.target.s.value}`);
+        break;
+    }
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Navbar">
     <div className="container-fluid">
@@ -106,6 +121,31 @@ function GlobalNav() {
               <li><Link className="dropdown-item" href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</Link></li>
             </ul>
           </li>
+          <ul className="nav-item me-auto">
+            {'people' == module && (
+              <form className="form-inline my-2 my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
+                <div className="input-group mr-sm-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder={searchPlaceholder}
+                    aria-label={searchPlaceholder}
+                    aria-describedby="btn-nav-search"
+                    name="s"
+                    id="s"
+                  />
+                  <button
+                    className={`btn btn-${btnClass}`}
+                    type="submit"
+                    id="btn-nav-search"
+                    style={{ borderColor: '#fff' }}
+                  >
+                    <FontAwesomeIcon icon={faSearch} />
+                  </button>
+                </div>
+              </form>
+            )}
+          </ul>
           <li className="nav-item">
             <Link className="nav-link" href="/about-us">About Us</Link>
           </li>
@@ -116,5 +156,3 @@ function GlobalNav() {
   </nav>
   );
 }
-
-export default GlobalNav;
