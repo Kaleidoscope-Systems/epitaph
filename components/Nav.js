@@ -121,35 +121,35 @@ export default function GlobalNav({ module }) {
               <li><Link className="dropdown-item" href="https://calendly.com/saintspyridon/psalm-reading-for-the-reposed" target="_blank">Sign up to pray</Link></li>
             </ul>
           </li>
-          <ul className="nav-item me-auto">
-            {('people' == module && caps?.viewPeople) && (
-              <form className="form-inline my-2 my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
-                <div className="input-group mr-sm-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={searchPlaceholder}
-                    aria-label={searchPlaceholder}
-                    aria-describedby="btn-nav-search"
-                    name="s"
-                    id="s"
-                  />
-                  <button
-                    className={`btn btn-${btnClass}`}
-                    type="submit"
-                    id="btn-nav-search"
-                    style={{ borderColor: '#fff' }}
-                  >
-                    <FontAwesomeIcon icon={faSearch} />
-                  </button>
-                </div>
-              </form>
-            )}
-          </ul>
           <li className="nav-item">
             <Link className="nav-link" href="/about-us">About Us</Link>
           </li>
         </ul>
+        <div className="collapse navbar-collapse">
+          {('people' == module && caps?.viewPeople) && (
+                <form className="form-inline ms-auto my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
+                  <div className="input-group mr-sm-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={searchPlaceholder}
+                      aria-label={searchPlaceholder}
+                      aria-describedby="btn-nav-search"
+                      name="s"
+                      id="s"
+                    />
+                    <button
+                      className={`btn btn-${btnClass}`}
+                      type="submit"
+                      id="btn-nav-search"
+                      style={{ borderColor: '#fff' }}
+                    >
+                      <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                  </div>
+                </form>
+              )}
+        </div>
         <LoginBtn />
       </div>
     </div>
