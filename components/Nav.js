@@ -122,7 +122,7 @@ export default function GlobalNav({ module }) {
             </ul>
           </li>
           <ul className="nav-item me-auto">
-            {'people' == module && (
+            {('people' == module && caps?.viewPeople) && (
               <form className="form-inline my-2 my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
                 <div className="input-group mr-sm-3">
                   <input
