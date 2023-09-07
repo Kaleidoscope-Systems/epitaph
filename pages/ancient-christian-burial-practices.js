@@ -1,18 +1,14 @@
 import Head from 'next/head'
 import Image from 'react-bootstrap/Image'
 import styles from '../styles/Layout.module.css'
+import Layout from '@/components/Layout'
 
 export default function About() {
+    const appModule = "home";
     return (
-        <div>
-      <Head>
-        <title>Ancient Christian Burial Practices - Ss. Nicodemus & Joseph Burial Society</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="text-bg-light p-4 rounded-5">
+      <>
+      <Layout title="Ancient Christian Burial Practices" metaDescriptionContent={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} appModule={appModule}>
+        <main className="text-bg-light p-4 rounded-5">
         <h1>
             Ancient Christian Burial Practices
         </h1>
@@ -76,6 +72,7 @@ Since Christians believe in true Life after death, the early Church sought to fo
         The Burial Society looks forward to helping you, or your loved ones, in preparing for this sacred moment in Christian life.
         </p>
       </main>
-    </div>
+      </Layout>
+      </>
     )
 }
