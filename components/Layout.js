@@ -25,7 +25,13 @@ const Layout = ({children, title, metaDescriptionContent, appModule}) => {
         )
     }
     return (
-        <><GlobalNav appModule={appModule}/><div className={styles.container}>
+        <><Head>
+            <title>{title}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content={metaDescriptionContent} />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <GlobalNav appModule={appModule}/><div className={styles.container}>
             <main className={styles.main}>
                 {children}</main>
         </div><Footer /></>
