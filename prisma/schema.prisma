@@ -23,7 +23,7 @@ model Content {
 }
 
 model People {
-  id              String @id @default(cuid())
+  id              String @id @default(cuid()) @unique
   givenName       String
   familyName      String
   displayName     String?
