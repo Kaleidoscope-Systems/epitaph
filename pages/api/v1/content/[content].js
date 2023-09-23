@@ -7,7 +7,7 @@ export default async function handler(req, res) {
       const { content } = req.query;
       const contentResponse = await prisma.content.findUniqueOrThrow({
         where: {
-            commonName: content,
+          commonName: content,
         },
       },
       );
