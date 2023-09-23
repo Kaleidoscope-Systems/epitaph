@@ -3,8 +3,9 @@ import Link from 'next/link'
 //import Image from 'next/image'
 
 export default function Home() {
+  const appModule="home";
   return ( 
-    <Layout title={process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME} metaDescriptionContent={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME}>
+    <Layout title={process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME} metaDescriptionContent={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} appModule={appModule}>
       <div className="container">
         <main className="main">
           <div className="container py-4">

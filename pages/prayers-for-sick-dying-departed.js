@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head'
-import Image from 'react-bootstrap/Image'
 import styles from '../styles/Layout.module.css'
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Accordion } from 'react-bootstrap';
+import Layout from '@/components/Layout';
 
 function SelectGender({ value, onChange }) {
   return (
@@ -122,12 +122,8 @@ export default function About() {
   }
 
     return (
-      <><Head>
-        <title>Prayers for the Sick, Dying, and Departed - Ss. Nicodemus & Joseph Burial Society</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head><main className="text-bg-light p-4 rounded-5 container-fluid">
+      <><Layout title="Prayers for the Sick, Dying, and Departed" metaDescriptionContent={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} module="home">
+        <main className="text-bg-light p-4 rounded-5 container-fluid">
           <h1>
             Prayers for the Sick, Dying, and Departed
           </h1>
@@ -189,6 +185,7 @@ export default function About() {
             </Accordion.Item>
           </Accordion>
 
-        </main></>
+        </main>
+      </Layout></>
     )
 }
