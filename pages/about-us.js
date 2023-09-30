@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Layout.module.css'
 import { useEffect, useState } from 'react'
 import fetchContent from '@/lib/content';
+import Layout from '@/components/Layout';
 
 export default function About() {
   const [aboutUsText, setAboutUsText] = useState("");
@@ -18,21 +19,16 @@ export default function About() {
 
   return (
     <div>
-      <Head>
-        <title>About Us - Ss. Nicodemus & Joseph Burial Society</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Ss. Nicodemus and Joseph Burial Society of Northern Colorado" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="text-bg-light p-4 rounded-5">
-        <div className='container-lg'>
-        <h1>
-            About Us
-        </h1>
-        <p dangerouslySetInnerHTML={{ __html: aboutUsText }} />
-        </div>
-      </main>
+      <Layout title="About Us" metaDescriptionContent={process.env.NEXT_PUBLIC_SOCIETY_LONG_NAME} module="home">
+        <main className="text-bg-light p-4 rounded-5">
+          <div className='container-lg'>
+          <h1>
+              About Us
+          </h1>
+          <p dangerouslySetInnerHTML={{ __html: aboutUsText }} />
+          </div>
+        </main>
+      </Layout>     
     </div>
   )
 }

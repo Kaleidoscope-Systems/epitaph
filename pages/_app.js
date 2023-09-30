@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import '../styles/fonts.css'
 import '@/styles/globals.css'
 import '../styles/background.css'
@@ -21,9 +20,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }) => {
       <GoogleAnalytics trackPageViews />
       <CookieConsent>This website uses cookies to understand the user experience.</CookieConsent>
       <SessionProvider session={session}>
-      <Layout>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Component {...pageProps} />
-      </Layout>
       </SessionProvider>
     </>
     
