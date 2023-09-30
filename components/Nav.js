@@ -36,7 +36,7 @@ export default function GlobalNav({ appModule }) {
     event.target.s.select();
     switch (appModule) {
       case 'people':
-        router.push(`/people/search/${event.target.s.value}`);
+        router.push(`/admin/people/${event.target.s.value}`);
         break;
     }
   };
