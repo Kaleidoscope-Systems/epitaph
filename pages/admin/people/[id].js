@@ -25,21 +25,35 @@ export default function People() {
 			: {};
 	const router = useRouter();
 	const personId = router.query.id;
-	const [personData, setPersonData] = useState(null);
+	const [person, setPerson] = useState(null);
 
 	useEffect(() => {
 		if (personId) {
 			fetchPeople(personId)
 				.then((data) => {
-					setPersonData(data);
+					setPerson(data);
 				})
 				.catch((error) => {
 					console.error("Error fetching people data:", error);
 				});
 		}
 	}, [personId]);	
-	console.log(personId);
-	console.log(personData);
+
+	let classStatusBadge = 'bg-secondary';
+  switch (person?.status){
+		case 'Living':
+			classStatusBadge = 'bg-success';
+			break;
+		case 'Reposed':
+			classStatusBadge = 'bg-indigo';
+			break;
+		case 'Inactive':
+			classStatusBadge = 'bg-secondary';
+			break;
+		default:
+			classStatusBadge = 'bg-secondary';
+	}
+
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
 		<>
@@ -49,36 +63,67 @@ export default function People() {
 	if ('authenticated' === status && caps.viewPeople) {
 		return (
 			<>
-				<Layout title={personData?.displayName ? personData.displayName : "Not Found"} appModule={appModule}>
-				<div style={{ backgroundColor: 'rgba(115, 45, 190,0.15)' }}>
+				{person && (<Layout title={person?.displayName ? person.displayName : "Not Found"} appModule={appModule}>
+				
+				<div className="mb-3" style={{ backgroundColor: 'rgba(115, 45, 190,0.15)' }}>
           <div className="container-fluid">
             <div className="row p-3">
-              <div className="col-12 d-flex align-items-center text-center text-md-start">
-							{personData && (<>
+							 <div className="col-12 align-items-center">
 								<Image
-									alt={`${personData.displayName}`}
-									src={`https://www.gravatar.com/avatar/${md5(personData.email ? personData.email : '00000000000000000000000000000000')}?s=60&d=identicon&r=g`}
+									alt={`${person.displayName}`}
+									// deepcode ignore InsecureHash: MD5 implementation is for fingerprint (vs. security) purpose
+									src={`https://www.gravatar.com/avatar/${md5(person.email ? person.email : '00000000000000000000000000000000')}?s=60&d=identicon&r=g`}
 									className="avatar d-none d-md-block float-start me-3 mt-2"
 									height="50"
 									width="50"
 								/>
-							
                 <h1 className="h3 mb-0 text-columbine">
-                  {personData.displayName ? personData.displayName : personData.id}
+                  {person.displayName ? person.displayName : person.id}
                 </h1>
-                {/* <p className="mb-0">
+                <p className="mb-0">
                   <span className={`badge ${classStatusBadge} me-2`} id="btn-status">
-                    {personData.status}
+                    {person?.status}
                   </span>
-                </p> */}</>)}
+                </p>
               </div>
             </div>
           </div>
         </div>
-					<main className="d-flex flex-nowrap" style={{height: '100vh'}}>
-						
-					</main>
-				</Layout>
+				<main className="container-fluid flex-nowrap" style={{height: '100vh'}}>
+					<div className="row">
+            <div className="col-12 col-md-8 p-4">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <div className="col">
+                  <h6 className="mb-0">Email</h6>
+                  <p className="text-muted">{person.email ? person.email : '-'}</p>
+                </div>
+                <div className="col">
+                  <h6 className="mb-0">Phone</h6>
+                  <p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
+                </div>
+                <div className="col">
+                  <h6 className="mb-0">Organ Donor</h6>
+                  <p className="text-muted">
+										{person.organDonor === true
+											? "Yes"
+											: person.organDonor === false
+											? "No"
+											: "-"}
+									</p>
+                </div>
+								<div className="col">
+                  <h6 className="mb-0">Occupation</h6>
+                  <p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+                </div>
+								<div className="col">
+                  <h6 className="mb-0">Marital status</h6>
+                  <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
+                </div>
+              </div>
+						</div>
+					</div>
+				</main>
+				</Layout>)}
 			</>
 		)
 	}
