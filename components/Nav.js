@@ -3,15 +3,14 @@ import LoginBtn from './login-btn';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrid, faCogs } from '@fortawesome/pro-solid-svg-icons';
+import { faGrid, faCogs, faSearch } from '@fortawesome/pro-solid-svg-icons';
+import router from 'next/router';
 
 let bgColor;
 let btnClass;
 let searchPlaceholder;
 
-btnClass = "fireweed";
-
-function GlobalNav() {
+export default function GlobalNav({ appModule }) {
   const { data: session, status } = useSession()
 	const caps = 
 		session && session.user.caps
@@ -24,7 +23,23 @@ function GlobalNav() {
 					}
 				})()
 			: {};
-
+  switch (appModule) {
+    case 'people':
+      bgColor = 'var(--azure)';
+      btnClass = 'azure';
+      searchPlaceholder = 'Search People';
+      break;
+  }
+  const navSearch = async (event) => {
+    event.preventDefault();
+    event.target.s.focus();
+    event.target.s.select();
+    switch (appModule) {
+      case 'people':
+        router.push(`/admin/people/${event.target.s.value}`);
+        break;
+    }
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light" aria-label="Navbar">
     <div className="container-fluid">
@@ -110,11 +125,34 @@ function GlobalNav() {
             <Link className="nav-link" href="/about-us">About Us</Link>
           </li>
         </ul>
+        <div className="collapse navbar-collapse">
+          {('people' == appModule && caps?.viewPeople) && (
+                <form className="form-inline ms-auto my-lg-0 me-2" id="nav-search" onSubmit={navSearch}>
+                  <div className="input-group mr-sm-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={searchPlaceholder}
+                      aria-label={searchPlaceholder}
+                      aria-describedby="btn-nav-search"
+                      name="s"
+                      id="s"
+                    />
+                    <button
+                      className={`btn btn-${btnClass}`}
+                      type="submit"
+                      id="btn-nav-search"
+                      style={{ borderColor: '#fff' }}
+                    >
+                      <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                  </div>
+                </form>
+              )}
+        </div>
         <LoginBtn />
       </div>
     </div>
   </nav>
   );
 }
-
-export default GlobalNav;

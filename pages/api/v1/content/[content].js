@@ -4,11 +4,10 @@ const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
     try {
-      const query = req.query;
-      const { content } = query;
+      const { content } = req.query;
       const contentResponse = await prisma.content.findUniqueOrThrow({
         where: {
-            commonName: content,
+          commonName: content,
         },
       },
       );

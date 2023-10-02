@@ -19,6 +19,12 @@ module.exports = {
         hostname: 'lh3.googleusercontent.com',
         port: '',
         pathname: '/a/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.gravatar.com',
+        port: '',
+        pathname: '/avatar/**',
       }
     ],
   },
