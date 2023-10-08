@@ -23,23 +23,24 @@ model Content {
 }
 
 model People {
-  id              String @id @default(cuid()) @unique
-  status          String?
-  givenName       String
-  familyName      String
-  displayName     String?
-  email           String?
-  mobilePhone     String?
-  homePhone       String?
-  workPhone       String?
-  mailingAddress  String?
-  physicalAddress String?
-  organDonor      Boolean?
-  birthPlace      String?
-  dateOfBirth     DateTime? @db.Date
-  maritalStatus   maritalStatus?
-  occupation      String?
-  executor        String?
+  id                    String @id @default(cuid()) @unique
+  createdTimestamp      DateTime? @db.Timestamp
+  status                String?
+  givenName             String
+  familyName            String
+  displayName           String?
+  email                 String?
+  mobilePhone           String?
+  homePhone             String?
+  workPhone             String?
+  mailingAddress        String?
+  physicalAddress       String?
+  organDonor            Boolean?
+  birthPlace            String?
+  dateOfBirth           DateTime? @db.Date
+  maritalStatus         maritalStatus?
+  occupation            String?
+  executor              String?
 }
 
 model Account {

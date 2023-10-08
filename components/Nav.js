@@ -53,6 +53,7 @@ export default function GlobalNav({ appModule }) {
             data-bs-toggle="dropdown"
             aria-expanded="false"
             style={{ borderRadius: '.5rem' }}
+            aria-label="Apps Menu"
           >
             <FontAwesomeIcon icon={faGrid} fixedWidth />
           </button>
@@ -142,6 +143,7 @@ export default function GlobalNav({ appModule }) {
                       className={`btn btn-${btnClass}`}
                       type="submit"
                       id="btn-nav-search"
+                      aria-label="Search button"
                       style={{ borderColor: '#fff' }}
                     >
                       <FontAwesomeIcon icon={faSearch} />
