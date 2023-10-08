@@ -93,7 +93,7 @@ export default function GlobalNav({ appModule }) {
       )}
       </>
 
-      <Link className="navbar-brand" href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Link>
+      <h1><Link className="navbar-brand" href="/">{process.env.NEXT_PUBLIC_SOCIETY_SHORT_NAME}</Link></h1>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
