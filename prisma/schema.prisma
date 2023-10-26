@@ -11,51 +11,53 @@ datasource db {
 }
 
 model Society {
-  id        Int @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   longName  String @unique
   shortName String
   address   String
 }
 
 model Content {
-  commonName  String  @id @unique
-  value       String
+  commonName String @id @unique
+  value      String
 }
 
 model People {
-  id                    String @id @default(cuid()) @unique
-  createdTimestamp      DateTime? @db.Timestamp
-  status                String?
-  givenName             String
-  familyName            String
-  displayName           String?
-  email                 String?
-  mobilePhone           String?
-  homePhone             String?
-  workPhone             String?
-  mailingAddress        String?
-  physicalAddress       String?
-  organDonor            Boolean?
-  birthPlace            String?
-  dateOfBirth           DateTime? @db.Date
-  maritalStatus         maritalStatus?
-  occupation            String?
-  executorId            String?
+  id                  String         @id @unique @default(cuid())
+  createdTimestamp    DateTime?      @db.Timestamp
+  status              String?
+  givenName           String
+  familyName          String
+  displayName         String?
+  email               String?
+  mobilePhone         String?
+  homePhone           String?
+  workPhone           String?
+  mailingAddress      String?
+  physicalAddress     String?
+  organDonor          Boolean?
+  birthPlace          String?
+  dateOfBirth         DateTime?      @db.Date
+  maritalStatus       maritalStatus?
+  occupation          String?
+  executorId          String?
+  executor            People?        @relation("Executor", fields: [executorId], references: [id])
+  executorOf          People[]       @relation("Executor")
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

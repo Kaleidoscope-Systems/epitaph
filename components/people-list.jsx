@@ -34,6 +34,8 @@ const PeopleList = () => {
           <th>Status</th>
           <th>First/Last Name</th>
           <th>Display Name</th>
+          <th>Mobile Phone</th>
+          <th>Executor</th>
         </tr>
       </thead>
       <tbody>
@@ -42,6 +44,8 @@ const PeopleList = () => {
             <td><span className={`badge ${calcClassStatusBadge(person.status)} me-2`} id="btn-status">{person.status}</span></td>
             <td><Link href={`/admin/people/${person.id}`}>{`${person.givenName} ${person.familyName}`}</Link></td>
             <td><Link href={`/admin/people/${person.id}`}>{person.displayName}</Link></td>
+            <td>{person.mobilePhone}</td>
+            <td><Link href={`/admin/people/${person.executorId}`}>{person.executor && person.executor.displayName}</Link></td>
           </tr>
         ))}
       </tbody>
