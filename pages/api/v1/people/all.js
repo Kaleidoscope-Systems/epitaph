@@ -20,7 +20,9 @@ export default async function handler(req, res) {
   if (session && caps.viewPeople) {
     try {
       //TODO: paginate results
-      const peopleResponse = await prisma.people.findMany();
+      const peopleResponse = await prisma.people.findMany({
+        include: { executor: true },
+      });
       res.status(200).json(peopleResponse);
     } catch (error) {
       res.status(500).json(error)
