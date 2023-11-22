@@ -63,7 +63,7 @@ const PeopleList = () => {
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div className="offcanvas-body">
-            <div>Show Columns:</div>
+            <h3 className="h5">Show Columns</h3>
             <div>
               <ul className="list-unstyled">
                 {Object.entries(columnLabels).map(([column, label]) => (

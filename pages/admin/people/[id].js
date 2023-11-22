@@ -116,8 +116,12 @@ export default function People() {
                   <p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
                 </div>
 								<div className="col">
-                  <h6 className="mb-0">Marital status</h6>
+                  <h6 className="mb-0">Marital Status</h6>
                   <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
+                </div>
+								<div className="col">
+                  <h6 className="mb-0">Birth Place</h6>
+                  <p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
                 </div>
               </div>
 						</div>
