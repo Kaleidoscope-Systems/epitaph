@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import md5 from "md5"
 import Image from "next/image"
+import Link from "next/link"
 
 let appModule = "people"
 
@@ -26,12 +27,23 @@ export default function People() {
 	const router = useRouter();
 	const personId = router.query.id;
 	const [person, setPerson] = useState(null);
+	const [executor, setExecutor] = useState(null);
 
 	useEffect(() => {
 		if (personId) {
 			fetchPeople(personId)
 				.then((data) => {
+					setExecutor(null);
 					setPerson(data);
+					if (data.executorId) {
+						fetchPeople(data.executorId)
+							.then((data) => {
+								setExecutor(data);
+							})
+							.catch((error) => {
+								console.error("Error fetching executor data:", error);
+							});
+					}
 				})
 				.catch((error) => {
 					console.error("Error fetching people data:", error);
@@ -53,6 +65,10 @@ export default function People() {
 		default:
 			classStatusBadge = 'bg-secondary';
 	}
+
+	const dobFormatted = person?.dateOfBirth?.split('T')[0];
+	const dayjs = require('dayjs')
+	const age = dayjs().diff(dobFormatted, 'year')
 
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
@@ -84,6 +100,7 @@ export default function People() {
                   <span className={`badge ${classStatusBadge} me-2`} id="btn-status">
                     {person?.status}
                   </span>
+									<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
                 </p>
               </div>
             </div>
@@ -120,8 +137,18 @@ export default function People() {
                   <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
                 </div>
 								<div className="col">
+                  <h6 className="mb-0">Date of Birth</h6>
+									<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+								</div>
+								<div className="col">
                   <h6 className="mb-0">Birth Place</h6>
                   <p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
+                </div>
+								<div className="col">
+                  <h6 className="mb-0">Executor</h6>
+                  <p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+                      {executor && executor.displayName}
+                    </Link> : '-'}</p>
                 </div>
               </div>
 						</div>
