@@ -54,6 +54,10 @@ export default function People() {
 			classStatusBadge = 'bg-secondary';
 	}
 
+	const dobFormatted = person?.dateOfBirth?.split('T')[0];
+	const dayjs = require('dayjs')
+	const age = dayjs().diff(dobFormatted, 'year')
+
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
 		<>
@@ -84,6 +88,7 @@ export default function People() {
                   <span className={`badge ${classStatusBadge} me-2`} id="btn-status">
                     {person?.status}
                   </span>
+									<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
                 </p>
               </div>
             </div>
@@ -119,6 +124,10 @@ export default function People() {
                   <h6 className="mb-0">Marital Status</h6>
                   <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
                 </div>
+								<div className="col">
+                  <h6 className="mb-0">Date of Birth</h6>
+									<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+								</div>
 								<div className="col">
                   <h6 className="mb-0">Birth Place</h6>
                   <p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
