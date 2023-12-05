@@ -20,11 +20,11 @@ export default async function handler(req, res) {
   if (req.method === 'PUT' && session && caps.updatePeople) {
     try {
       const { id, ...data } = req.body;
-      const updatedPerson = await prisma.people.update({
+      const updatePerson = await prisma.people.update({
         where: { id },
         data,
       });
-      res.status(200).json(updatedPerson);
+      res.status(200).json(updatePerson);
     } catch (error) {
       res.status(500).json(error);
     }
