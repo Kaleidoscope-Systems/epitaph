@@ -2,7 +2,7 @@ import {useSession} from "next-auth/react"
 import AccessDenied from '@/components/access-denied'
 import Loading from '@/components/loading'
 import Layout from '@/components/Layout'
-import { fetchPeople } from "@/lib/people"
+import { fetchPeople, updatePerson } from "@/lib/people"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import md5 from "md5"
@@ -69,6 +69,16 @@ export default function People() {
 	const dobFormatted = person?.dateOfBirth?.split('T')[0];
 	const dayjs = require('dayjs')
 	const age = dayjs().diff(dobFormatted, 'year')
+	const handleStatusUpdate = (newStatus) => {
+		const newPersonStatus = newStatus.target.status.value;
+		const newPersonData = {
+			status: newPersonStatus,
+		};
+		updatePerson(person.id, newPersonData)
+			.catch((error) => {
+				console.error("Error updating person status:", error);
+			});
+	};
 
 	if ('loading' === status) return (<Loading />)
 	if ('unauthenticated' === status) return (
@@ -97,13 +107,32 @@ export default function People() {
                   {person.displayName ? person.displayName : person.id}
                 </h1>
                 <p className="mb-0">
-                  <span className={`badge ${classStatusBadge} me-2`} id="btn-status">
+                  <span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
                     {person?.status}
                   </span>
 									<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
                 </p>
               </div>
             </div>
+					<div className="offcanvas offcanvas-end" tabIndex="-1" id="statusOffcanvasRight" aria-labelledby="statusOffcanvasRightLabel">
+						<div className="offcanvas-header">
+							<h2 className="offcanvas-title" id="statusOffcanvasRightLabel">Change Status</h2>
+							<button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div className="offcanvas-body">
+						<label htmlFor="newPersonStatus" className="h6 form-label">Person Status</label>
+							<div>
+								<form onSubmit={handleStatusUpdate}>
+									<select name="status" id="newPersonStatus" className="form-select">
+										<option value="Living">Living</option>
+										<option value="Reposed">Reposed</option>
+										<option value="Inactive">Inactive</option>
+									</select>
+									<button type="submit" className="btn btn-primary mt-3">Update Status</button>
+								</form>
+							</div>
+						</div>
+					</div>
           </div>
         </div>
 				<main className="container-fluid flex-nowrap" style={{height: '100vh'}}>
