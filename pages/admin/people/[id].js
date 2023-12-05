@@ -2,7 +2,7 @@ import {useSession} from "next-auth/react"
 import AccessDenied from '@/components/access-denied'
 import Loading from '@/components/loading'
 import Layout from '@/components/Layout'
-import fetchPeople from "@/lib/people"
+import { fetchPeople } from "@/lib/people"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import md5 from "md5"
