@@ -17,7 +17,19 @@ export default async function handler(req, res) {
 					}
 				})()
 			: {};
-  if (session && caps.viewPeople) {
+  if (req.method === 'PUT' && session && caps.updatePeople) {
+    try {
+      const { id, ...data } = req.body;
+      const updatedPerson = await prisma.people.update({
+        where: { id },
+        data,
+      });
+      res.status(200).json(updatedPerson);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
+  if (req.method === 'GET' && session && caps.viewPeople) {
     try {
       const { id } = req.query;
       const peopleResponse = await prisma.people.findUniqueOrThrow({
@@ -31,7 +43,10 @@ export default async function handler(req, res) {
       res.status(500).json(error)
     }
   }
-  if (session && !caps.viewPeople) {
+  if (req.method === 'PUT' && session && !caps.updatePeople) {
+    res.status(403).json({error: 'User does not have permission to update people.'})
+  }
+  if (req.method === 'GET' && session && !caps.viewPeople) {
     res.status(403).json({error: 'User does not have permission to view people.'})
   }
   if (!session) {
