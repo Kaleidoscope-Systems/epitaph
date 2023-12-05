@@ -17,12 +17,12 @@ export default async function handler(req, res) {
 					}
 				})()
 			: {};
-  if (req.method === 'PUT' && session && caps.updatePeople) {
+  if (req.method === 'PATCH' && session && caps.editPeople) {
     try {
       const { id, ...data } = req.body;
       const updatePerson = await prisma.people.update({
-        where: { id },
-        data,
+        where: { id: id },
+        data: data,
       });
       res.status(200).json(updatePerson);
     } catch (error) {
@@ -43,8 +43,8 @@ export default async function handler(req, res) {
       res.status(500).json(error)
     }
   }
-  if (req.method === 'PUT' && session && !caps.updatePeople) {
-    res.status(403).json({error: 'User does not have permission to update people.'})
+  if (req.method === 'PUT' && session && !caps.editPeople) {
+    res.status(403).json({error: 'User does not have permission to edit people.'})
   }
   if (req.method === 'GET' && session && !caps.viewPeople) {
     res.status(403).json({error: 'User does not have permission to view people.'})
