@@ -70,6 +70,7 @@ export default function People() {
 	const dayjs = require('dayjs')
 	const age = dayjs().diff(dobFormatted, 'year')
 	const handleStatusUpdate = (newStatus) => {
+		newStatus.preventDefault();
 		const newPersonStatus = newStatus.target.status.value;
 		const newPersonData = {
 			status: newPersonStatus,
