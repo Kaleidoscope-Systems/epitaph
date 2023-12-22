@@ -17,9 +17,14 @@ export default async function handler(req, res) {
 					}
 				})()
 			: {};
+  console.log('req.method:', req.method)
   if (req.method === 'PATCH' && session && caps.editPeople) {
+    console.log('req.body:', req.body)
     try {
-      const { id, ...data } = req.body;
+      const id = req.query.id;
+      const data = JSON.parse(req.body);
+      console.log('id:', id)
+      console.log('data:', data)
       const updatePerson = await prisma.people.update({
         where: { id: id },
         data: data,

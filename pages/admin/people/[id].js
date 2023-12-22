@@ -4,7 +4,7 @@ import Loading from '@/components/loading'
 import Layout from '@/components/Layout'
 import { fetchPeople, updatePerson } from "@/lib/people"
 import { useRouter } from "next/router"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import md5 from "md5"
 import Image from "next/image"
 import Link from "next/link"
@@ -29,7 +29,7 @@ export default function People() {
 	const [person, setPerson] = useState(null);
 	const [executor, setExecutor] = useState(null);
 
-	useEffect(() => {
+	const refreshData = useCallback(() => {
 		if (personId) {
 			fetchPeople(personId)
 				.then((data) => {
@@ -49,7 +49,11 @@ export default function People() {
 					console.error("Error fetching people data:", error);
 				});
 		}
-	}, [personId]);	
+	}, [personId]);
+
+	useEffect(() => {
+		refreshData();
+	}, [personId, refreshData]);
 
 	let classStatusBadge = 'bg-secondary';
   switch (person?.status){
@@ -69,13 +73,17 @@ export default function People() {
 	const dobFormatted = person?.dateOfBirth?.split('T')[0];
 	const dayjs = require('dayjs')
 	const age = dayjs().diff(dobFormatted, 'year')
-	const handleStatusUpdate = (newStatus) => {
+	const handleStatusUpdate = async (newStatus) => {
 		newStatus.preventDefault();
 		const newPersonStatus = newStatus.target.status.value;
 		const newPersonData = {
 			status: newPersonStatus,
 		};
 		updatePerson(person.id, newPersonData)
+			.then(() => {
+				refreshData();
+				//TODO: Hide the offcanvas
+			})
 			.catch((error) => {
 				console.error("Error updating person status:", error);
 			});
@@ -129,7 +137,14 @@ export default function People() {
 										<option value="Reposed">Reposed</option>
 										<option value="Inactive">Inactive</option>
 									</select>
-									<button type="submit" className="btn btn-primary mt-3">Update Status</button>
+									<div className="row g-3 mt-3 d-flex">
+										<div className="col-6">
+											<button type="submit" className="btn btn-primary w-100">Update Status</button>
+										</div>
+										<div className="col-6">
+											<button type="reset" className="btn btn-light w-100" data-bs-dismiss="offcanvas">Cancel</button>
+										</div>
+									</div>
 								</form>
 							</div>
 						</div>
