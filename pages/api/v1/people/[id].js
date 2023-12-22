@@ -17,7 +17,24 @@ export default async function handler(req, res) {
 					}
 				})()
 			: {};
-  if (session && caps.viewPeople) {
+  console.log('req.method:', req.method)
+  if (req.method === 'PATCH' && session && caps.editPeople) {
+    console.log('req.body:', req.body)
+    try {
+      const id = req.query.id;
+      const data = JSON.parse(req.body);
+      console.log('id:', id)
+      console.log('data:', data)
+      const updatePerson = await prisma.people.update({
+        where: { id: id },
+        data: data,
+      });
+      res.status(200).json(updatePerson);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
+  if (req.method === 'GET' && session && caps.viewPeople) {
     try {
       const { id } = req.query;
       const peopleResponse = await prisma.people.findUniqueOrThrow({
@@ -31,7 +48,10 @@ export default async function handler(req, res) {
       res.status(500).json(error)
     }
   }
-  if (session && !caps.viewPeople) {
+  if (req.method === 'PUT' && session && !caps.editPeople) {
+    res.status(403).json({error: 'User does not have permission to edit people.'})
+  }
+  if (req.method === 'GET' && session && !caps.viewPeople) {
     res.status(403).json({error: 'User does not have permission to view people.'})
   }
   if (!session) {

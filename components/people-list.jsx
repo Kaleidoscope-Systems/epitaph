@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchPeople from "@/lib/people";
+import { fetchPeople } from "@/lib/people";
 import Link from "next/link";
 
 const PeopleList = () => {
