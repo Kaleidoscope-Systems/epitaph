@@ -1,0 +1,26 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+//Generating All Shades of Indigo
+@each $key, $value in $indigos {
+  .bg-#{$key}{
+    background-color: $value !important;
+  }
+
+  .text-#{$key}{
+    color: $value !important;
+  }
+}
+
+.bg-indigo {
+  background-color: $indigo !important;
+}
+.text-indigo {
+  color: $indigo !important;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
