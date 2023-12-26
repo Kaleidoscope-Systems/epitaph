@@ -1,8 +1,8 @@
 import '../styles/fonts.css'
 import '@/styles/globals.css'
 import '../styles/background.css'
-// add bootstrap css
-import 'bootstrap/dist/css/bootstrap.css'
+// add custom bootstrap
+import 'styles/bootstrap.css'
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { SessionProvider } from "next-auth/react"
 import CookieConsent from "react-cookie-consent";
