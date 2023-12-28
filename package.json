@@ -29,7 +29,7 @@
     "next-auth": "^4.24.5",
     "nextjs-google-analytics": "^2.3.3",
     "node": "^18.18.2",
-    "npm": "^10.2.4",
+    "npm": "^10.2.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-cookie-consent": "^9.0.0",
