@@ -8,6 +8,8 @@ import { useState, useEffect, useCallback } from "react"
 import md5 from "md5"
 import Image from "next/image"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAddressBook, faListTimeline, faWavePulse, faEdit } from "@fortawesome/pro-solid-svg-icons"
 
 let appModule = "people"
 
@@ -154,48 +156,93 @@ export default function People() {
 				<main className="container-fluid flex-nowrap" style={{height: '100vh'}}>
 					<div className="row">
             <div className="col-12 col-md-8 p-4">
-              <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div className="col">
-                  <h6 className="mb-0">Email</h6>
-                  <p className="text-muted">{person.email ? person.email : '-'}</p>
-                </div>
-                <div className="col">
-                  <h6 className="mb-0">Phone</h6>
-                  <p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
-                </div>
-                <div className="col">
-                  <h6 className="mb-0">Organ Donor</h6>
-                  <p className="text-muted">
-										{person.organDonor === true
-											? "Yes"
-											: person.organDonor === false
-											? "No"
-											: "-"}
-									</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Occupation</h6>
-                  <p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Marital Status</h6>
-                  <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Date of Birth</h6>
-									<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+							<div className="d-flex align-items-start">
+								<div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<a className="nav-link active" id="bio" data-bs-toggle="pill" data-bs-target="#v-pills-bio" type="button" role="tab" aria-controls="v-pills-bio" aria-selected="true"><FontAwesomeIcon icon={faWavePulse} className="me-3" fixedWidth />Bio</a>
+									<a className="nav-link" id="contact" data-bs-toggle="pill" data-bs-target="#v-pills-contact" type="button" role="tab" aria-controls="v-pills-contact" aria-selected="false"><FontAwesomeIcon icon={faAddressBook} className="me-3" fixedWidth />Contact</a>
+									<a className="nav-link" id="history" data-bs-toggle="pill" data-bs-target="#v-pills-history" type="button" role="tab" aria-controls="v-pills-history" aria-selected="false"><FontAwesomeIcon icon={faListTimeline} className="me-3" fixedWidth />History</a>
 								</div>
-								<div className="col">
-                  <h6 className="mb-0">Birth Place</h6>
-                  <p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Executor</h6>
-                  <p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
-                      {executor && executor.displayName}
-                    </Link> : '-'}</p>
-                </div>
-              </div>
+								<div className="tab-content ms-3" id="v-pills-tabContent">
+									<div className="tab-pane fade show active" id="v-pills-bio" role="tabpanel" aria-labelledby="bio" tabIndex="0">
+										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+											<div className="col">
+												<h6 className="mb-0">Organ Donor</h6>
+												<p className="text-muted">
+													{person.organDonor === true
+														? "Yes"
+														: person.organDonor === false
+														? "No"
+														: "-"}
+												<span className={`badge bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal">
+													<FontAwesomeIcon icon={faEdit} fixedWidth />Edit
+												</span>
+												</p>
+												<div className="modal" id="editOrganDonorModal" tabIndex="-1">
+													<div className="modal-dialog">
+														<div className="modal-content">
+															<div className="modal-header">
+																<h5 className="modal-title">Edit Organ Donor Status</h5>
+																<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div className="modal-body">
+																Future dropdown to edit organ donor status.
+															</div>
+															<div className="modal-footer">
+																<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																<button type="button" className="btn btn-primary">Save changes</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Occupation</h6>
+												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Marital Status</h6>
+												<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Date of Birth</h6>
+												<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Birth Place</h6>
+												<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Executor</h6>
+												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+														{executor && executor.displayName}
+													</Link> : '-'}</p>
+											</div>
+             				</div>
+									</div>
+									<div className="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="contact" tabIndex="0">
+										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+											<div className="col">
+												<h6 className="mb-0">Email</h6>
+												<p className="text-muted">{person.email ? person.email : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Phone</h6>
+												<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Occupation</h6>
+												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+											</div>
+											<div className="col">
+												<h6 className="mb-0">Executor</h6>
+												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+														{executor && executor.displayName}
+													</Link> : '-'}</p>
+											</div>
+             				</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</main>
