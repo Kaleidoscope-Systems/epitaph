@@ -171,82 +171,87 @@ export default function People() {
 														<FontAwesomeIcon icon={faEdit} fixedWidth />
 													</span></h2>
 										<div className="card-body">
-										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-											<div className="col">
-												<h3 className="h4 mb-0">Organ Donor</h3>
-												
-												<p className="text-muted">
-													{person.organDonor === true
-														? "Yes"
-														: person.organDonor === false
-														? "No"
-														: "-"}
-												</p>
-												<div className="modal" id="editBioModal" tabIndex="-1">
-													<div className="modal-dialog">
-														<div className="modal-content">
-															<div className="modal-header">
-																<h5 className="modal-title">Edit Bio</h5>
-																<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div className="modal-body">
-																Future fields to edit bio information.
-															</div>
-															<div className="modal-footer">
-																<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																<button type="button" className="btn btn-primary">Save changes</button>
+											<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+												<div className="col">
+													<h3 className="h4 mb-0">Organ Donor</h3>
+													
+													<p className="text-muted">
+														{person.organDonor === true
+															? "Yes"
+															: person.organDonor === false
+															? "No"
+															: "-"}
+													</p>
+													<div className="modal" id="editBioModal" tabIndex="-1">
+														<div className="modal-dialog">
+															<div className="modal-content">
+																<div className="modal-header">
+																	<h5 className="modal-title">Edit Bio</h5>
+																	<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																</div>
+																<div className="modal-body">
+																	Future fields to edit bio information.
+																</div>
+																<div className="modal-footer">
+																	<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																	<button type="button" className="btn btn-primary">Save changes</button>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Occupation</h3>
+													<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Marital Status</h3>
+													<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Date of Birth</h3>
+													<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Birth Place</h3>
+													<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Executor</h3>
+													<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+															{executor && executor.displayName}
+														</Link> : '-'}</p>
+												</div>
 											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Occupation</h3>
-												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Marital Status</h3>
-												<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Date of Birth</h3>
-												<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Birth Place</h3>
-												<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Executor</h3>
-												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
-														{executor && executor.displayName}
-													</Link> : '-'}</p>
-											</div>
-             				</div>
 										</div>
 									</div>
 									</div>
 									<div className="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="contact" tabIndex="0">
-										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-											<div className="col">
-												<h3 className="h4 mb-0">Email</h3>
-												<p className="text-muted">{person.email ? person.email : '-'}</p>
+										<div className="card">
+											<h2 className="card-header">Contact</h2>
+											<div className="card-body">
+												<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+													<div className="col">
+														<h3 className="h4 mb-0">Email</h3>
+														<p className="text-muted">{person.email ? person.email : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Phone</h3>
+														<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Occupation</h3>
+														<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Executor</h3>
+														<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+																{executor && executor.displayName}
+															</Link> : '-'}</p>
+													</div>
+												</div>
 											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Phone</h3>
-												<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Occupation</h3>
-												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
-											</div>
-											<div className="col">
-												<h3 className="h4 mb-0">Executor</h3>
-												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
-														{executor && executor.displayName}
-													</Link> : '-'}</p>
-											</div>
-             				</div>
+										</div>
 									</div>
 								</div>
 							</div>
