@@ -165,7 +165,7 @@ export default function People() {
 								<div className="tab-content ms-3" id="v-pills-tabContent">
 									<div className="tab-pane fade show active" id="v-pills-bio" role="tabpanel" aria-labelledby="bio" tabIndex="0">
 									<div className="card">
-										<h2 className="card-header">Bio<span className={`badge fs-5 text-end bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal">
+										<h2 className="card-header">Bio<span className={`badge fs-5 text-end bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editBioModal">
 														<FontAwesomeIcon icon={faEdit} fixedWidth />
 													</span></h2>
 										<div className="card-body">
@@ -180,15 +180,15 @@ export default function People() {
 														? "No"
 														: "-"}
 												</p>
-												<div className="modal" id="editOrganDonorModal" tabIndex="-1">
+												<div className="modal" id="editBioModal" tabIndex="-1">
 													<div className="modal-dialog">
 														<div className="modal-content">
 															<div className="modal-header">
-																<h5 className="modal-title">Edit Organ Donor Status</h5>
+																<h5 className="modal-title">Edit Bio</h5>
 																<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div className="modal-body">
-																Future dropdown to edit organ donor status.
+																Future fields to edit bio information.
 															</div>
 															<div className="modal-footer">
 																<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
