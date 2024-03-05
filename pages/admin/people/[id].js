@@ -164,12 +164,15 @@ export default function People() {
 								</div>
 								<div className="tab-content ms-3" id="v-pills-tabContent">
 									<div className="tab-pane fade show active" id="v-pills-bio" role="tabpanel" aria-labelledby="bio" tabIndex="0">
+									<div className="card">
+										<h2 className="card-header">Bio<span className={`badge fs-5 text-end bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal">
+														<FontAwesomeIcon icon={faEdit} fixedWidth />
+													</span></h2>
+										<div className="card-body">
 										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 											<div className="col">
-												<h3 className="mb-0" style={{ display: 'inline-block' }}>Organ Donor</h3>
-												<span className={`badge bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal" style={{ display: 'inline-block' }}>
-													<FontAwesomeIcon icon={faEdit} fixedWidth />Edit
-												</span>
+												<h3 className="h4 mb-0">Organ Donor</h3>
+												
 												<p className="text-muted">
 													{person.organDonor === true
 														? "Yes"
@@ -196,45 +199,47 @@ export default function People() {
 												</div>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Occupation</h3>
+												<h3 className="h4 mb-0">Occupation</h3>
 												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Marital Status</h3>
+												<h3 className="h4 mb-0">Marital Status</h3>
 												<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Date of Birth</h3>
+												<h3 className="h4 mb-0">Date of Birth</h3>
 												<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Birth Place</h3>
+												<h3 className="h4 mb-0">Birth Place</h3>
 												<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Executor</h3>
+												<h3 className="h4 mb-0">Executor</h3>
 												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
 														{executor && executor.displayName}
 													</Link> : '-'}</p>
 											</div>
              				</div>
+										</div>
+									</div>
 									</div>
 									<div className="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="contact" tabIndex="0">
 										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 											<div className="col">
-												<h3 className="mb-0">Email</h3>
+												<h3 className="h4 mb-0">Email</h3>
 												<p className="text-muted">{person.email ? person.email : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Phone</h3>
+												<h3 className="h4 mb-0">Phone</h3>
 												<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Occupation</h3>
+												<h3 className="h4 mb-0">Occupation</h3>
 												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
 											</div>
 											<div className="col">
-												<h3 className="mb-0">Executor</h3>
+												<h3 className="h4 mb-0">Executor</h3>
 												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
 														{executor && executor.displayName}
 													</Link> : '-'}</p>
