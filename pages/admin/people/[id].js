@@ -105,16 +105,16 @@ export default function People() {
 				<div className="mb-3" style={{ backgroundColor: 'rgba(115, 45, 190,0.15)' }}>
           <div className="container-fluid">
             <div className="row p-3">
-							 <div className="col-12 align-items-center">
+							 <div className="col-12">
 								<Image
 									alt={`${person.displayName}`}
 									// deepcode ignore InsecureHash: MD5 implementation is for fingerprint (vs. security) purpose
-									src={`https://www.gravatar.com/avatar/${md5(person.email ? person.email : '00000000000000000000000000000000')}?s=60&d=identicon&r=g`}
+									src={`https://www.gravatar.com/avatar/${md5(person.email ? person.email : '00000000000000000000000000000000')}?s=100&d=identicon&r=g`}
 									className="avatar d-none d-md-block float-start me-3 mt-2"
-									height="50"
-									width="50"
+									height="100"
+									width="100"
 								/>
-                <h1 className="mb-0 text-columbine">
+                <h1 className="mb-0">
                   {person.displayName ? person.displayName : person.id}
                 </h1>
                 <p className="mb-0">
