@@ -8,6 +8,8 @@ import { useState, useEffect, useCallback } from "react"
 import md5 from "md5"
 import Image from "next/image"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAddressBook, faListTimeline, faWavePulse, faEdit } from "@fortawesome/pro-solid-svg-icons"
 
 let appModule = "people"
 
@@ -103,25 +105,27 @@ export default function People() {
 				<div className="mb-3" style={{ backgroundColor: 'rgba(115, 45, 190,0.15)' }}>
           <div className="container-fluid">
             <div className="row p-3">
-							 <div className="col-12 align-items-center">
+							<div className="col-12 d-flex align-items-center">
 								<Image
 									alt={`${person.displayName}`}
 									// deepcode ignore InsecureHash: MD5 implementation is for fingerprint (vs. security) purpose
-									src={`https://www.gravatar.com/avatar/${md5(person.email ? person.email : '00000000000000000000000000000000')}?s=60&d=identicon&r=g`}
+									src={`https://www.gravatar.com/avatar/${md5(person.email ? person.email : '00000000000000000000000000000000')}?s=100&d=identicon&r=g`}
 									className="avatar d-none d-md-block float-start me-3 mt-2"
-									height="50"
-									width="50"
+									height="100"
+									width="100"
 								/>
-                <h1 className="h3 mb-0 text-columbine">
-                  {person.displayName ? person.displayName : person.id}
-                </h1>
-                <p className="mb-0">
-                  <span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
-                    {person?.status}
-                  </span>
-									<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
-                </p>
-              </div>
+								<div>
+									<h1 className="mb-0">
+										{person.displayName ? person.displayName : person.id}
+									</h1>
+									<p className="mb-0">
+										<span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
+											{person?.status}
+										</span>
+										<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
+									</p>
+								</div>
+							</div>
             </div>
 					<div className="offcanvas offcanvas-end" tabIndex="-1" id="statusOffcanvasRight" aria-labelledby="statusOffcanvasRightLabel">
 						<div className="offcanvas-header">
@@ -129,7 +133,7 @@ export default function People() {
 							<button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 						</div>
 						<div className="offcanvas-body">
-						<label htmlFor="newPersonStatus" className="h6 form-label">Person Status</label>
+						<label htmlFor="newPersonStatus" className="h3 form-label">Person Status</label>
 							<div>
 								<form onSubmit={handleStatusUpdate}>
 									<select name="status" id="newPersonStatus" className="form-select">
@@ -154,48 +158,103 @@ export default function People() {
 				<main className="container-fluid flex-nowrap" style={{height: '100vh'}}>
 					<div className="row">
             <div className="col-12 col-md-8 p-4">
-              <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div className="col">
-                  <h6 className="mb-0">Email</h6>
-                  <p className="text-muted">{person.email ? person.email : '-'}</p>
-                </div>
-                <div className="col">
-                  <h6 className="mb-0">Phone</h6>
-                  <p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
-                </div>
-                <div className="col">
-                  <h6 className="mb-0">Organ Donor</h6>
-                  <p className="text-muted">
-										{person.organDonor === true
-											? "Yes"
-											: person.organDonor === false
-											? "No"
-											: "-"}
-									</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Occupation</h6>
-                  <p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Marital Status</h6>
-                  <p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Date of Birth</h6>
-									<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+							<div className="d-flex align-items-start">
+								<div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<a className="nav-link active" id="bio" data-bs-toggle="pill" data-bs-target="#v-pills-bio" type="button" role="tab" aria-controls="v-pills-bio" aria-selected="true"><FontAwesomeIcon icon={faWavePulse} className="me-3" fixedWidth />Bio</a>
+									<a className="nav-link" id="contact" data-bs-toggle="pill" data-bs-target="#v-pills-contact" type="button" role="tab" aria-controls="v-pills-contact" aria-selected="false"><FontAwesomeIcon icon={faAddressBook} className="me-3" fixedWidth />Contact</a>
+									<a className="nav-link" id="history" data-bs-toggle="pill" data-bs-target="#v-pills-history" type="button" role="tab" aria-controls="v-pills-history" aria-selected="false"><FontAwesomeIcon icon={faListTimeline} className="me-3" fixedWidth />History</a>
 								</div>
-								<div className="col">
-                  <h6 className="mb-0">Birth Place</h6>
-                  <p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
-                </div>
-								<div className="col">
-                  <h6 className="mb-0">Executor</h6>
-                  <p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
-                      {executor && executor.displayName}
-                    </Link> : '-'}</p>
-                </div>
-              </div>
+								<div className="tab-content ms-3" id="v-pills-tabContent">
+									<div className="tab-pane fade show active" id="v-pills-bio" role="tabpanel" aria-labelledby="bio" tabIndex="0">
+									<div className="card">
+										<h2 className="card-header">Bio<span className={`badge fs-5 text-end bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editBioModal">
+														<FontAwesomeIcon icon={faEdit} fixedWidth />
+													</span></h2>
+										<div className="card-body">
+											<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+												<div className="col">
+													<h3 className="h4 mb-0">Organ Donor</h3>
+													
+													<p className="text-muted">
+														{person.organDonor === true
+															? "Yes"
+															: person.organDonor === false
+															? "No"
+															: "-"}
+													</p>
+													<div className="modal" id="editBioModal" tabIndex="-1">
+														<div className="modal-dialog">
+															<div className="modal-content">
+																<div className="modal-header">
+																	<h5 className="modal-title">Edit Bio</h5>
+																	<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																</div>
+																<div className="modal-body">
+																	Future fields to edit bio information.
+																</div>
+																<div className="modal-footer">
+																	<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																	<button type="button" className="btn btn-primary">Save changes</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Occupation</h3>
+													<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Marital Status</h3>
+													<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Date of Birth</h3>
+													<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Birth Place</h3>
+													<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
+												</div>
+												<div className="col">
+													<h3 className="h4 mb-0">Executor</h3>
+													<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+															{executor && executor.displayName}
+														</Link> : '-'}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+									<div className="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="contact" tabIndex="0">
+										<div className="card">
+											<h2 className="card-header">Contact</h2>
+											<div className="card-body">
+												<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+													<div className="col">
+														<h3 className="h4 mb-0">Email</h3>
+														<p className="text-muted">{person.email ? person.email : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Phone</h3>
+														<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Occupation</h3>
+														<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
+													</div>
+													<div className="col">
+														<h3 className="h4 mb-0">Executor</h3>
+														<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
+																{executor && executor.displayName}
+															</Link> : '-'}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</main>
