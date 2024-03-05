@@ -105,7 +105,7 @@ export default function People() {
 				<div className="mb-3" style={{ backgroundColor: 'rgba(115, 45, 190,0.15)' }}>
           <div className="container-fluid">
             <div className="row p-3">
-							 <div className="col-12">
+							<div className="col-12 d-flex align-items-center">
 								<Image
 									alt={`${person.displayName}`}
 									// deepcode ignore InsecureHash: MD5 implementation is for fingerprint (vs. security) purpose
@@ -114,16 +114,18 @@ export default function People() {
 									height="100"
 									width="100"
 								/>
-                <h1 className="mb-0">
-                  {person.displayName ? person.displayName : person.id}
-                </h1>
-                <p className="mb-0">
-                  <span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
-                    {person?.status}
-                  </span>
-									<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
-                </p>
-              </div>
+								<div>
+									<h1 className="mb-0">
+										{person.displayName ? person.displayName : person.id}
+									</h1>
+									<p className="mb-0">
+										<span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
+											{person?.status}
+										</span>
+										<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
+									</p>
+								</div>
+							</div>
             </div>
 					<div className="offcanvas offcanvas-end" tabIndex="-1" id="statusOffcanvasRight" aria-labelledby="statusOffcanvasRightLabel">
 						<div className="offcanvas-header">
