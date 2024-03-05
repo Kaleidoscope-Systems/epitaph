@@ -114,7 +114,7 @@ export default function People() {
 									height="50"
 									width="50"
 								/>
-                <h1 className="h3 mb-0 text-columbine">
+                <h1 className="mb-0 text-columbine">
                   {person.displayName ? person.displayName : person.id}
                 </h1>
                 <p className="mb-0">
@@ -131,7 +131,7 @@ export default function People() {
 							<button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 						</div>
 						<div className="offcanvas-body">
-						<label htmlFor="newPersonStatus" className="h6 form-label">Person Status</label>
+						<label htmlFor="newPersonStatus" className="h3 form-label">Person Status</label>
 							<div>
 								<form onSubmit={handleStatusUpdate}>
 									<select name="status" id="newPersonStatus" className="form-select">
@@ -166,16 +166,16 @@ export default function People() {
 									<div className="tab-pane fade show active" id="v-pills-bio" role="tabpanel" aria-labelledby="bio" tabIndex="0">
 										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 											<div className="col">
-												<h6 className="mb-0">Organ Donor</h6>
+												<h3 className="mb-0" style={{ display: 'inline-block' }}>Organ Donor</h3>
+												<span className={`badge bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal" style={{ display: 'inline-block' }}>
+													<FontAwesomeIcon icon={faEdit} fixedWidth />Edit
+												</span>
 												<p className="text-muted">
 													{person.organDonor === true
 														? "Yes"
 														: person.organDonor === false
 														? "No"
 														: "-"}
-												<span className={`badge bg-primary m-2`} id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#editOrganDonorModal">
-													<FontAwesomeIcon icon={faEdit} fixedWidth />Edit
-												</span>
 												</p>
 												<div className="modal" id="editOrganDonorModal" tabIndex="-1">
 													<div className="modal-dialog">
@@ -196,23 +196,23 @@ export default function People() {
 												</div>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Occupation</h6>
+												<h3 className="mb-0">Occupation</h3>
 												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Marital Status</h6>
+												<h3 className="mb-0">Marital Status</h3>
 												<p className="text-muted">{person.maritalStatus ? person.maritalStatus : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Date of Birth</h6>
+												<h3 className="mb-0">Date of Birth</h3>
 												<p className="text-muted">{person.dateOfBirth ? dobFormatted : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Birth Place</h6>
+												<h3 className="mb-0">Birth Place</h3>
 												<p className="text-muted">{person.birthPlace ? person.birthPlace : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Executor</h6>
+												<h3 className="mb-0">Executor</h3>
 												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
 														{executor && executor.displayName}
 													</Link> : '-'}</p>
@@ -222,19 +222,19 @@ export default function People() {
 									<div className="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="contact" tabIndex="0">
 										<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 											<div className="col">
-												<h6 className="mb-0">Email</h6>
+												<h3 className="mb-0">Email</h3>
 												<p className="text-muted">{person.email ? person.email : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Phone</h6>
+												<h3 className="mb-0">Phone</h3>
 												<p className="text-muted">{person.mobilePhone ? person.mobilePhone : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Occupation</h6>
+												<h3 className="mb-0">Occupation</h3>
 												<p className="text-muted">{person.occupation ? person.occupation : '-'}</p>
 											</div>
 											<div className="col">
-												<h6 className="mb-0">Executor</h6>
+												<h3 className="mb-0">Executor</h3>
 												<p className="text-muted">{executor ? <Link href={`/admin/people/${person.executorId}`}>
 														{executor && executor.displayName}
 													</Link> : '-'}</p>
