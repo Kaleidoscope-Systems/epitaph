@@ -30,7 +30,7 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.2.0",
     "semver": "^7.6.0",
-    "snyk": "^1.1286.1"
+    "snyk": "^1.1286.2"
   },
   "devDependencies": {
     "@prisma/client": "^5.7.1",
