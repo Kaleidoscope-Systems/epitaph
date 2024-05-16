@@ -25,10 +25,10 @@
     "nextjs-google-analytics": "^2.3.3",
     "node": "^20.11.1",
     "npm": "^10.5.2",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "react-bootstrap": "^2.10.2",
     "react-cookie-consent": "^9.0.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.3.0",
     "semver": "^7.6.0",
     "snyk": "^1.1286.1"
   },
