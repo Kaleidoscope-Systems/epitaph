@@ -5,7 +5,10 @@ Epitaph is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-n
 ## Getting Started
 
 ### Set Up The Database
-- Install Postgres 
+- Install Postgres
+
+- Install Postgres contrib modules
+On Fedora, something like: `sudo dnf install postgresql15-contrib-15.5-4.fc40.x86_64`
 
 - Login to Postgres `pgsql -U postgres`
 
@@ -14,6 +17,8 @@ Epitaph is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-n
 - Create the database `CREATE DATABASE epitaphdb;`
 
 - Grant privileges to the user for the database `GRANT ALL PRIVILEGES ON DATABASE epitaphdb TO epitaph;`
+
+- Install the uuid-ossp extension `create extension "uuid-ossp";`
 
 - Exit Postgres `\q`
 
