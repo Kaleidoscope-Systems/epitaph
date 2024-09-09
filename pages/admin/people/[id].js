@@ -122,7 +122,8 @@ export default function People() {
 										<span className={`badge ${classStatusBadge} me-2`} id="btn-status" type="button" data-bs-toggle="offcanvas" data-bs-target="#statusOffcanvasRight" aria-controls="statusOffcanvasRight">
 											{person?.status}
 										</span>
-										<span className="text-muted" id="age">{person?.dateOfBirth ? `· Age ${age}` : ""}</span>
+										{person?.status && person?.dateOfBirth && <span>· </span>}
+										<span className="text-muted" id="age">{person?.dateOfBirth ? `Age ${age}` : ""}</span>
 									</p>
 								</div>
 							</div>
