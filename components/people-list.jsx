@@ -93,44 +93,55 @@ const PeopleList = () => {
             </tr>
           </thead>
           <tbody>
-            {peopleListData?.map((person, index) => (
-              <tr key={index}>
-                {selectedColumns.includes("status") && (
-                  <td>
-                    <span
-                      className={`badge ${calcClassStatusBadge(person.status)} me-2`}
-                      id="btn-status"
-                    >
-                      {person.status}
-                    </span>
-                  </td>
-                )}
-                {selectedColumns.includes("name") && (
-                  <td>
-                    <Link href={`/admin/people/${person.id}`}>
-                      {`${person.givenName} ${person.familyName}`}
-                    </Link>
-                  </td>
-                )}
-                {selectedColumns.includes("displayName") && (
-                  <td>
-                    <Link href={`/admin/people/${person.id}`}>
-                      {person.displayName}
-                    </Link>
-                  </td>
-                )}
-                {selectedColumns.includes("mobilePhone") && (
-                  <td>{person.mobilePhone}</td>
-                )}
-                {selectedColumns.includes("executor") && (
-                  <td>
-                    {person.executor && (<Link href={`/admin/people/${person.executorId}`}>
-                      {person.executor && person.executor.displayName}
-                    </Link>)}
-                  </td>
-                )}
-              </tr>
-            ))}
+            {(() => {
+              try {
+                console.log(peopleListData);
+                return peopleListData?.map((person, index) => (
+                  <tr key={index}>
+                    {selectedColumns.includes("status") && (
+                      <td>
+                        <span
+                          className={`badge ${calcClassStatusBadge(person.status)} me-2`}
+                          id="btn-status"
+                        >
+                          {person.status}
+                        </span>
+                      </td>
+                    )}
+                    {selectedColumns.includes("name") && (
+                      <td>
+                        <Link href={`/admin/people/${person.id}`}>
+                          {`${person.givenName} ${person.familyName}`}
+                        </Link>
+                      </td>
+                    )}
+                    {selectedColumns.includes("displayName") && (
+                      <td>
+                        <Link href={`/admin/people/${person.id}`}>
+                          {person.displayName}
+                        </Link>
+                      </td>
+                    )}
+                    {selectedColumns.includes("mobilePhone") && (
+                      <td>{person.mobilePhone}</td>
+                    )}
+                    {selectedColumns.includes("executor") && (
+                      <td>
+                        {person.executor && (
+                          <Link href={`/admin/people/${person.executorId}`}>
+                            {person.executor.displayName}
+                          </Link>
+                        )}
+                      </td>
+                    )}
+                  </tr>
+                ));
+              } catch (error) {
+                console.error('Error rendering people list:', error);
+                console.log(peopleListData);
+                return <tr><td colSpan={selectedColumns.length}>Error loading data</td></tr>;
+              }
+            })()}
           </tbody>
         </table>
       </div>
